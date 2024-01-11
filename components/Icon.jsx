@@ -1,7 +1,7 @@
 // components/Icon.js
 import { RiBarChartHorizontalLine } from 'react-icons/ri'
 import { RxPerson } from 'react-icons/rx'
-import { CiShoppingCart, CiSearch, CiFacebook } from 'react-icons/ci'
+import { CiShoppingCart, CiSearch, CiFacebook, CiHeart  } from 'react-icons/ci'
 import { IoStorefrontOutline } from 'react-icons/io5'
 import { IoIosHelpCircleOutline, IoMdClose  } from 'react-icons/io'
 
@@ -29,6 +29,7 @@ const iconComponents = {
   x: RiTwitterXLine,
   youtube: AiOutlineYoutube,
   bag: BsBag,
+  wishlist: CiHeart 
 }
 
 const Icon = ({ name, ...props }) => {

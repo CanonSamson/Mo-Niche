@@ -6,13 +6,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import SideBar from './SideBar'
 import { useAppContext } from '@/Context'
+import SearchBar from './SearchBar'
 
 const Navbar = () => {
   const [viewCurrencies, setViewCurrencies] = useState(false)
   const [viewSideBar, setViewSideBar] = useState(false)
+  const [search, setSearch] = useState(false)
   const { currenties, setSelectedCurrency, selectedCurrency } = useAppContext()
   return (
     <nav>
+      <SearchBar search={search} setSearch={setSearch} />
       <div
         className={`bg-white text-[#414141]
         duration-500  fixed top-0 right-0 z-50 w-full  flex items-center h-[60px] px-4 justify-between`}
@@ -80,7 +83,7 @@ const Navbar = () => {
             </ul>
           </li>
           <li>
-            <button>
+            <button onClick={() => setSearch(true)}>
               <Icon name="search" className="" size={24} />
             </button>
           </li>

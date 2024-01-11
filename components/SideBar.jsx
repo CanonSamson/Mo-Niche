@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import Icon from './Icon'
 
-const SideBar = ({  viewSideBar }) => {
+const SideBar = ({ viewSideBar }) => {
   return (
     <div
       className={`${
@@ -24,17 +25,21 @@ const SideBar = ({  viewSideBar }) => {
         </div>
 
         <ul className=" grid mt-10 gap-4">
-          <li className=" flex items-center gap-2">
-            <Icon name="person" size={24} />
-            <span>Sign in | Create account</span>
+          <li>
+            <Link href="/login" className=" flex items-center gap-2">
+              <Icon name="person" size={24} />
+              <span>Sign in | Create account</span>
+            </Link>
           </li>
           <li className=" flex items-center gap-2">
             <Icon name="bag" size={24} />
             <span>My purchases</span>
           </li>
-          <li className=" flex items-center gap-2">
-            <Icon name="person" size={24} />
-            <span>Wishlist</span>
+          <li>
+            <Link href="/wishlist" className=" flex items-center gap-2">
+              <Icon name="wishlist" size={24} />
+              <span>Wishlist</span>
+            </Link>
           </li>
           <li className=" flex items-center gap-2">
             <Icon name="store" size={24} />

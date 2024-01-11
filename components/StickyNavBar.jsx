@@ -6,12 +6,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import SideBar from './SideBar'
 import { useAppContext } from '@/Context'
+import SearchBar from './SearchBar'
 
 const StickyNavBar = () => {
   const [scroll, setScroll] = useState(false)
   const [viewCurrencies, setViewCurrencies] = useState(false)
   const [viewSideBar, setViewSideBar] = useState(false)
   const { currenties, setSelectedCurrency, selectedCurrency } = useAppContext()
+  const [search, setSearch] = useState(false)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -32,6 +34,7 @@ const StickyNavBar = () => {
 
   return (
     <nav>
+      <SearchBar search={search} setSearch={setSearch} />
       <div
         className={` ${
           scroll ? 'bg-white text-[#414141]' : ' text-white'
@@ -100,7 +103,7 @@ const StickyNavBar = () => {
             </ul>
           </li>
           <li>
-            <button>
+            <button onClick={() => setSearch(true)}>
               <Icon name="search" className="" size={24} />
             </button>
           </li>
