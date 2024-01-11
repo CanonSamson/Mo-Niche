@@ -15,25 +15,27 @@ const NavBar = () => {
   const pathname = usePathname()
 
   useEffect(() => {
-    if (pathname != '/') {
+    if (pathname !== '/') {
       setScroll(true)
       return
-    }
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScroll(true)
-      } else {
-        setScroll(false)
+    } else {
+      const handleScroll = () => {
+        if (window.scrollY > 0) {
+          setScroll(true)
+        } else {
+          setScroll(false)
+        }
+      }
+  
+      // Attach the event listener
+      window.addEventListener('scroll', handleScroll)
+  
+      // Remove the event listener when the component is unmounted
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
       }
     }
-
-    // Attach the event listener
-    window.addEventListener('scroll', handleScroll)
-
-    // Remove the event listener when the component is unmounted
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
+    
   }, [])
 
   return (
