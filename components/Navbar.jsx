@@ -15,28 +15,28 @@ const NavBar = () => {
   const pathname = usePathname()
 
   useEffect(() => {
-    if (pathname !== '/') {
-      setScroll(true)
-      return
-    } else {
-      const handleScroll = () => {
-        if (window.scrollY > 0) {
-          setScroll(true)
-        } else {
-          setScroll(false)
-        }
+    if (pathname !== '/') setScroll(true)
+
+    const handleScroll = () => {
+      if (pathname !== '/') {
+        setScroll(true)
+        return
       }
-  
-      // Attach the event listener
-      window.addEventListener('scroll', handleScroll)
-  
-      // Remove the event listener when the component is unmounted
-      return () => {
-        window.removeEventListener('scroll', handleScroll)
+      if (window.scrollY > 0) {
+        setScroll(true)
+      } else {
+        setScroll(false)
       }
     }
-    
-  }, [])
+
+    // Attach the event listener
+    window.addEventListener('scroll', handleScroll)
+
+    // Remove the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [pathname, window.scrollY])
 
   return (
     <nav>
@@ -99,16 +99,18 @@ const NavBar = () => {
               <Icon name="search" className="" size={24} />
             </button>
           </li>
-          <li>
-            <Link href="login" className="relative">
+          <li className=" relative">
+            <Link href="/login">
               <Icon name="person" size={24} />
-              <span className=" flex z-10 h-[5px] w-[5px] bg-red-500 rounded-full absolute top-1 -right-1 " />
+              <span className="flex z-10 h-[5px] w-[5px] bg-red-500 rounded-full absolute top-1 -right-1 " />
               <span className=" animate-ping flex z-10 h-[5px] w-[5px] bg-red-500 rounded-full absolute top-1 -right-1 " />
             </Link>
           </li>
 
           <li>
-            <Icon name="cart" size={24} />
+            <Link href="/cart">
+              <Icon name="cart" size={24} />
+            </Link>
           </li>
         </ul>
       </div>

@@ -21,7 +21,7 @@ const Input = ({ error, label, type, ...input }) => {
         >
           <input
             type={showPassword ? "text" : type}
-            className={`bg-white w-full flex-1 focus:outline-none placeholder:text-black `}
+            className={`bg-white w-full rounded-none flex-1 focus:outline-none placeholder:text-black `}
             autoComplete="off"
             {...input}
           />
@@ -39,10 +39,9 @@ const Input = ({ error, label, type, ...input }) => {
       ) : (
         <input
           type={type}
-          className={` bg-white w-full focus:outline-none placeholder:text-black border p-2 h-[40px] ${
+          className={` bg-white w-full rounded-none focus:outline-none placeholder:text-black border p-2 h-[40px] ${
             error ? "border-red-600 " : " border-[#828282]"
           }`}
-          autoComplete="off"
           {...input}
         />
       )}
