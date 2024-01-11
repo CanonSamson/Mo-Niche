@@ -1,62 +1,62 @@
-"use client";
+'use client'
 
-import Icon from "@/components/Icon";
-import Image from "next/image";
-import { useState, useEffect } from "react";
+import Icon from '@/components/Icon'
+import Image from 'next/image'
+import { useState, useEffect } from 'react'
 
 export default function Carousel({ autoSlideInterval = 3000 }) {
-  const [curr, setCurr] = useState(0);
-  const [animeText, setAnimeText] = useState(true);
+  const [curr, setCurr] = useState(0)
+  const [animeText, setAnimeText] = useState(true)
   const images = [
-    "/images/image-7.jpg",
-    "/images/image-5.jpg",
-    "/images/image-8.jpg",
-  ];
+    '/images/image-7.jpg',
+    '/images/image-5.jpg',
+    '/images/image-8.jpg',
+  ]
 
   const carouselData = [
     {
-      image: "/images/image-7.jpg",
-      heading: "  Become a Mo Niche Woman",
-      subtitle: "  ...WOMAN CLOTHES STORE...",
+      image: '/images/image-7.jpg',
+      heading: '  Become a Mo Niche Woman',
+      subtitle: '  ...WOMAN CLOTHES STORE...',
 
-      buttons: [{ text: "Book a Consultation" }],
+      buttons: [{ text: 'Book a Consultation' }],
     },
     {
-      image: "/images/image-5.jpg",
-      heading: " Mo Niche Woman",
-      subtitle: "  ...WOMAN CLOTHES STORE...",
+      image: '/images/image-5.jpg',
+      heading: ' Mo Niche Woman',
+      subtitle: '  ...WOMAN CLOTHES STORE...',
 
-      buttons: [{ text: "Book a Consultation" }],
+      buttons: [{ text: 'Book a Consultation' }],
     },
     {
-      image: "/images/image-8.jpg",
-      heading: "  Become a Mo Niche Woman",
-      subtitle: "  ...WOMAN CLOTHES...",
+      image: '/images/image-8.jpg',
+      heading: '  Become a Mo Niche Woman',
+      subtitle: '  ...WOMAN CLOTHES...',
 
-      buttons: [{ text: "Shop Now" }, { text: "Qick Buy" }],
+      buttons: [{ text: 'Shop Now' }, { text: 'Qick Buy' }],
     },
-  ];
+  ]
   const prev = () =>
-    setCurr((curr) => (curr === 0 ? images.length - 1 : curr - 1));
+    setCurr((curr) => (curr === 0 ? images.length - 1 : curr - 1))
   const next = () =>
-    setCurr((curr) => (curr === images.length - 1 ? 0 : curr + 1));
+    setCurr((curr) => (curr === images.length - 1 ? 0 : curr + 1))
 
   useEffect(() => {
-    const slideInterval = setInterval(next, autoSlideInterval);
-    return () => clearInterval(slideInterval);
-  }, []);
+    const slideInterval = setInterval(next, autoSlideInterval)
+    return () => clearInterval(slideInterval)
+  }, [])
 
   useEffect(() => {
-    setAnimeText((prev) => false);
-    const slideInterval = setInterval(() => setAnimeText((prev) => true), 2000);
-    return () => clearInterval(slideInterval);
-  }, [curr]);
+    setAnimeText((prev) => false)
+    const slideInterval = setInterval(() => setAnimeText((prev) => true), 2000)
+    return () => clearInterval(slideInterval)
+  }, [curr])
   return (
     <header className=" justify-center items-center relative text-gray-100 flex flex-col w-full bg-gray-50 min-h-screen">
       <div className=" relative flex flex-col justify-center items-center z-20">
         <span
           className={`${
-            animeText ? "tracking-wide top-4  opacity-0" : " opacity-100 top-1 "
+            animeText ? 'tracking-wide top-4  opacity-0' : ' opacity-100 top-1 '
           } relative duration-700  text-[12px]`}
         >
           {carouselData[curr]?.subtitle}
@@ -64,8 +64,8 @@ export default function Carousel({ autoSlideInterval = 3000 }) {
         <h1
           className={`${
             animeText
-              ? "tracking-wide top-4  opacity-0"
-              : "pt-4 pb-10 opacity-100 top-1 "
+              ? 'tracking-wide top-4  opacity-0'
+              : 'pt-4 pb-10 opacity-100 top-1 '
           }  relative duration-700  font-serif  text-2xl `}
         >
           {carouselData[curr]?.heading}
@@ -77,8 +77,8 @@ export default function Carousel({ autoSlideInterval = 3000 }) {
               key={index}
               className={`${
                 animeText
-                  ? "tracking-wide top-1  opacity-0"
-                  : " opacity-100 top-4 "
+                  ? 'tracking-wide top-1  opacity-0'
+                  : ' opacity-100 top-4 '
               } relative duration-700 bg-white px-4 py-3 text-black `}
             >
               {text}
@@ -93,8 +93,8 @@ export default function Carousel({ autoSlideInterval = 3000 }) {
               key={index}
               className={`${
                 index === curr
-                  ? "z-30 opacity-100  scale-100"
-                  : "z-20 opacity-0 scale-110"
+                  ? 'z-30 opacity-100  scale-100'
+                  : 'z-20 opacity-0 scale-110'
               } duration-500 w-full h-full object-cover absolute z-0`}
               src={item}
               width={800}
@@ -117,14 +117,15 @@ export default function Carousel({ autoSlideInterval = 3000 }) {
         <div className="flex items-center justify-center gap-2">
           {images.map((_, i) => (
             <div
+              key={i % 2}
               className={`
               transition-all w-3 h-3 bg-white rounded-full
-              ${curr === i ? "p-2" : "bg-opacity-0 border border-white"}
+              ${curr === i ? 'p-2' : 'bg-opacity-0 border border-white'}
             `}
             />
           ))}
         </div>
       </div>
     </header>
-  );
+  )
 }
