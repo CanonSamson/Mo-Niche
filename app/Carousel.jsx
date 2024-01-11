@@ -4,14 +4,9 @@ import Icon from '@/components/Icon'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
-export default function Carousel({ autoSlideInterval = 3000 }) {
+export default function Carousel({ autoSlideInterval = 5000 }) {
   const [curr, setCurr] = useState(0)
   const [animeText, setAnimeText] = useState(true)
-  const images = [
-    '/images/image-7.jpg',
-    '/images/image-5.jpg',
-    '/images/image-8.jpg',
-  ]
 
   const carouselData = [
     {
@@ -37,9 +32,9 @@ export default function Carousel({ autoSlideInterval = 3000 }) {
     },
   ]
   const prev = () =>
-    setCurr((curr) => (curr === 0 ? images.length - 1 : curr - 1))
+    setCurr((curr) => (curr === 0 ? carouselData.length - 1 : curr - 1))
   const next = () =>
-    setCurr((curr) => (curr === images.length - 1 ? 0 : curr + 1))
+    setCurr((curr) => (curr === carouselData.length - 1 ? 0 : curr + 1))
 
   useEffect(() => {
     const slideInterval = setInterval(next, autoSlideInterval)
@@ -48,7 +43,7 @@ export default function Carousel({ autoSlideInterval = 3000 }) {
 
   useEffect(() => {
     setAnimeText((prev) => false)
-    const slideInterval = setInterval(() => setAnimeText((prev) => true), 2000)
+    const slideInterval = setInterval(() => setAnimeText((prev) => true), 4000)
     return () => clearInterval(slideInterval)
   }, [curr])
   return (
@@ -88,7 +83,7 @@ export default function Carousel({ autoSlideInterval = 3000 }) {
       </div>
       <div className="overflow-hidden  h-screen w-full object-cover absolute z-0  ">
         <div className="  transition-transform ease-out w-full h-full  duration-500">
-          {images.map((item, index) => (
+          {carouselData.map(({ image }, index) => (
             <Image
               key={index}
               className={`${
@@ -96,7 +91,7 @@ export default function Carousel({ autoSlideInterval = 3000 }) {
                   ? 'z-30 opacity-100  scale-100'
                   : 'z-20 opacity-0 scale-110'
               } duration-500 w-full h-full object-cover absolute z-0`}
-              src={item}
+              src={image}
               width={800}
               height={800}
               alt=""
@@ -115,7 +110,7 @@ export default function Carousel({ autoSlideInterval = 3000 }) {
 
       <div className="absolute bottom-4 right-0 left-0">
         <div className="flex items-center justify-center gap-2">
-          {images.map((_, i) => (
+          {carouselData.map((_, i) => (
             <div
               key={i % 2}
               className={`

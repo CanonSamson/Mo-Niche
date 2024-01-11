@@ -5,12 +5,13 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import SideBar from './SideBar'
+import { useAppContext } from '@/Context'
 
 const StickyNavBar = () => {
   const [scroll, setScroll] = useState(false)
   const [viewCurrencies, setViewCurrencies] = useState(false)
   const [viewSideBar, setViewSideBar] = useState(false)
-
+  const { currenties, setSelectedCurrency, selectedCurrency } = useAppContext()
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -64,7 +65,7 @@ const StickyNavBar = () => {
               onClick={() => setViewCurrencies(!viewCurrencies)}
               className=" text-[14px] flex items-center  relative"
             >
-              <span>USD</span>
+              <span>{selectedCurrency}</span>
               <Icon
                 name="right"
                 className={`${
@@ -80,9 +81,22 @@ const StickyNavBar = () => {
                   : 'opacity-100 visible'
               } right-0 border border-gray-200 duration-500 text-black absolute top-7  shadow-lg text-[14px] z-50 bg-white `}
             >
-              <li className="p-2 border-b border-gray-200">USD</li>
-              <li className="p-2 border-b border-gray-200">GBP</li>
-              <li className="p-2">EUR</li>
+              {currenties.map(({ code }, index) => (
+                <>
+                  {selectedCurrency != code && (
+                    <li
+                      key={index}
+                      onClick={() => {
+                        setSelectedCurrency(code)
+                        setViewCurrencies(false)
+                      }}
+                      className={` p-2 border-b`}
+                    >
+                      {code}
+                    </li>
+                  )}
+                </>
+              ))}
             </ul>
           </li>
           <li>

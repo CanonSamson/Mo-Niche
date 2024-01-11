@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { AppProvider } from "@/Context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,13 +17,14 @@ export const viewport = {
   userScalable: "no",
 };
 
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
-        <Footer />
+        <AppProvider>
+          {children}
+          <Footer />
+        </AppProvider>
       </body>
     </html>
   );

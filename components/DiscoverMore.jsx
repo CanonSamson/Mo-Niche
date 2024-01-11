@@ -6,7 +6,8 @@ import { useEffect, useState } from 'react'
 
 const DiscoverMore = () => {
   const [curr, setCurr] = useState(0)
-  const [animeText, setAnimeText] = useState(true)
+
+
   const discoveries = [
     {
       image: '/images/image-8.jpg',
@@ -16,7 +17,13 @@ const DiscoverMore = () => {
     },
     {
       image: '/images/image-5.jpg',
-      heading: '  Impact Day Dress',
+      heading: 'Collections - 2023',
+      subtitle: '  Discover more',
+      link: '',
+    },
+    {
+      image: '/images/image-7.jpg',
+      heading: 'Collections - 2024',
       subtitle: '  Discover more',
       link: '',
     },
@@ -28,15 +35,11 @@ const DiscoverMore = () => {
     setCurr((curr) => (curr === discoveries.length - 1 ? 0 : curr + 1))
 
   useEffect(() => {
-    const slideInterval = setInterval(next, 3000)
+    const slideInterval = setInterval(next, 5000)
     return () => clearInterval(slideInterval)
   }, [])
 
-  useEffect(() => {
-    setAnimeText((prev) => false)
-    const slideInterval = setInterval(() => setAnimeText((prev) => true), 2000)
-    return () => clearInterval(slideInterval)
-  }, [curr])
+  
 
   return (
     <div className="  flex mt-20">

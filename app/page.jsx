@@ -14,8 +14,8 @@ export default function Home() {
 
         <section className=" px-4 mt-5">
           <div className="  items-center flex flex-col  justify-center ">
-            <h3>Shop our bestsellers</h3>
-            <p>View all</p>
+            <h3>Shop Our Bestsellers</h3>
+            <p className=' border-b border-black'>View all</p>
           </div>
 
           <div className="  grid grid-cols-2 gap-4 mt-10">
@@ -26,7 +26,7 @@ export default function Home() {
                 height={200}
                 className=" h-[250px] w-full object-cover object-top "
               />
-              <span className=" text-base font-medium ">Product name</span>
+              <span className=" text-[14px]">Shop our bestsellers product name.</span>
               <span className=" text-">$ 200.00</span>
               <div className="flex items-center gap-2">
                 <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
@@ -43,7 +43,7 @@ export default function Home() {
                 height={200}
                 className=" h-[250px] w-full object-cover object-top "
               />
-              <span className=" text-base font-medium ">Product name</span>
+              <span className=" text-[14px]">Shop our bestsellers product name.</span>
               <span className=" text-">$ 200.00</span>
               <div className="flex items-center gap-2">
                 <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
@@ -59,8 +59,8 @@ export default function Home() {
 
         <section className=" px-4 mt-20 ">
           <div className="  items-center flex flex-col  justify-center ">
-            <h3>Shop our bestsellers</h3>
-            <p>View all</p>
+            <h3>Ready To Wear</h3>
+            <p className=' border-b border-black'>View all</p>
           </div>
 
           <div className="  grid grid-cols-2 gap-4 mt-4">
@@ -71,7 +71,7 @@ export default function Home() {
                 height={200}
                 className=" h-[250px] w-full object-cover object-top "
               />
-              <span className=" text-base font-medium ">Product name</span>
+              <span className=" text-[14px]"> Ready to wear product name.</span>
               <span className=" text-">$ 120.00</span>
               <div className="flex items-center gap-2">
                 <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
@@ -88,7 +88,7 @@ export default function Home() {
                 height={200}
                 className=" h-[250px] w-full object-cover object-top "
               />
-              <span className=" text-base font-medium ">Product name</span>
+              <span className=" text-[14px]"> Ready to wear product name.</span>
               <span className=" text-">$ 200.00</span>
               <div className="flex items-center gap-2">
                 <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
@@ -105,7 +105,7 @@ export default function Home() {
                 height={200}
                 className=" h-[250px] w-full object-cover object-top "
               />
-              <span className=" text-base font-medium ">Product name</span>
+              <span className=" text-[14px]"> Ready to wear product name.</span>
               <span className=" text-">$ 40.00</span>
               <div className="flex items-center gap-2">
                 <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
@@ -122,7 +122,7 @@ export default function Home() {
                 height={200}
                 className=" h-[250px] w-full object-cover object-top "
               />
-              <span className=" text-base font-medium ">Product name</span>
+              <span className=" text-[14px]"> Ready to wear product name.</span>
               <span className=" text-">$ 290.00</span>
               <div className="flex items-center gap-2">
                 <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
@@ -136,8 +136,8 @@ export default function Home() {
 
         <section className=" px-4 mt-20 ">
           <div className="  items-center flex flex-col  justify-center ">
-            <h3>Shop our bestsellers</h3>
-            <p>View all</p>
+            <h3>After Part Dress</h3>
+            <p className=' border-b border-black'>View all</p>
           </div>
 
           <div className="  grid grid-cols-2 gap-4 mt-4">
@@ -148,7 +148,7 @@ export default function Home() {
                 height={200}
                 className=" h-[250px] w-full object-cover object-top "
               />
-              <span className=" text-base font-medium ">Product name</span>
+              <span className=" text-[14px]">after part dress product name.</span>
               <span className=" text-">$ 200.00</span>
               <div className="flex items-center gap-2">
                 <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
@@ -165,7 +165,7 @@ export default function Home() {
                 height={200}
                 className=" h-[250px] w-full object-cover object-top "
               />
-              <span className=" text-base font-medium ">Product name</span>
+              <span className=" text-[14px]">after part dress product name.</span>
               <span className=" text-">$ 400.00</span>
               <div className="flex items-center gap-2">
                 <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
@@ -182,7 +182,7 @@ export default function Home() {
                 height={200}
                 className=" h-[250px] w-full object-cover object-top "
               />
-              <span className=" text-base font-medium ">Product name</span>
+              <span className=" text-[14px]">after part dress product name.</span>
               <span className=" text-">$ 630.00</span>
               <div className="flex items-center gap-2">
                 <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
@@ -199,7 +199,7 @@ export default function Home() {
                 height={200}
                 className=" h-[250px] w-full object-cover object-top "
               />
-              <span className=" text-base font-medium ">Product name</span>
+              <span className=" text-[14px]">after part dress product name.</span>
               <span className=" text-">$ 202.00</span>
               <div className="flex items-center gap-2">
                 <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
@@ -219,7 +219,7 @@ export default function Home() {
               className=" h-full opacity-75 -z-1 right-0 top-0 absolute w-full object-cover object-top "
             />
             <span className=" text-4xl font-medium uppercase flex  z-10 ">
-              #MoNicheWemen
+              #MoNicheLady
             </span>
             <Link href="#" className=" flex  z-10 ">
               <span className=" w-auto pb-1 items-start text-start border-b">
