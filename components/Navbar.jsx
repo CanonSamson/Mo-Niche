@@ -36,7 +36,7 @@ const NavBar = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [pathname, window.scrollY])
+  }, [pathname, window?.scrollY])
 
   return (
     <nav>
