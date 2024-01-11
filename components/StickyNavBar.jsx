@@ -1,20 +1,40 @@
 'use client'
 
 import Icon from './Icon'
-import {  useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import SideBar from './SideBar'
 
-const Navbar = () => {
+const StickyNavBar = () => {
+  const [scroll, setScroll] = useState(false)
   const [viewCurrencies, setViewCurrencies] = useState(false)
   const [viewSideBar, setViewSideBar] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScroll(true)
+      } else {
+        setScroll(false)
+      }
+    }
+
+    // Attach the event listener
+    window.addEventListener('scroll', handleScroll)
+
+    // Remove the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   return (
     <nav>
       <div
-        className={`bg-white text-[#414141]
-        duration-500  fixed top-0 right-0 z-50 w-full  flex items-center h-[60px] px-4 justify-between`}
+        className={` ${
+          scroll ? 'bg-white text-[#414141]' : ' text-white'
+        } duration-500  fixed top-0 right-0 z-50 w-full  flex items-center h-[60px] px-4 justify-between`}
       >
         <div className="flex items-center gap-2">
           <button
@@ -29,7 +49,7 @@ const Navbar = () => {
 
           <Link href="/">
             <Image
-              src="/logo-black.svg"
+              src={!scroll ? '/logo-white.svg' : '/logo-black.svg'}
               className=" w-[120px]"
               alt="mo niche collection logo"
               width={120}
@@ -90,5 +110,4 @@ const Navbar = () => {
   )
 }
 
-
-export default Navbar;
+export default StickyNavBar
