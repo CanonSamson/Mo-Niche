@@ -40,14 +40,14 @@ const DiscoverMore = () => {
 
   return (
     <div className="  flex mt-20">
-      <div className=" bg-black  overflow-hidden justify-end items-start p-4 text-white w-full  relative flex flex-col ">
+      <div className="w-full">
         {discoveries.map(({ image, heading, link, subtitle }, index) => (
-          <div
-            key={index}
-            className="h-[400px] justify-end items-start w-full  relative flex flex-col"
-          >
+          <>
             {curr === index && (
-              <>
+              <div
+                key={index}
+                className=" p-4 bg-black  overflow-hidden  text-white w-full h-[400px] justify-end items-start relative flex flex-col"
+              >
                 <Image
                   src={image}
                   width={500}
@@ -63,24 +63,24 @@ const DiscoverMore = () => {
                     </span>
                   </Link>
                 </div>
-              </>
-            )}
-          </div>
-        ))}
 
-        <div className="flex mt-4 items-center mx-auto  justify-center  z-1 relative">
-          <div className="flex items-center mx-auto  justify-center gap-2">
-            {discoveries.map((_, i) => (
-              <div
-                key={i}
-                className={`
+                <div className="flex mt-4 items-center mx-auto  justify-center  z-1 relative">
+                  <div className="flex items-center mx-auto  justify-center gap-2">
+                    {discoveries.map((_, i) => (
+                      <div
+                        key={i}
+                        className={`
               transition-all w-2 h-2 bg-white rounded-full
               ${curr === i ? 'p-1' : 'bg-opacity-0 border border-white'}
             `}
-              />
-            ))}
-          </div>
-        </div>
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
+        ))}
       </div>
     </div>
   )
