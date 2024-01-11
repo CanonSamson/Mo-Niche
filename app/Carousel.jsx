@@ -10,21 +10,21 @@ export default function Carousel({ autoSlideInterval = 5000 }) {
 
   const carouselData = [
     {
-      image: '/images/image-7.jpg',
+      image: '/images/image-4.jpg',
       heading: '  Become a Mo Niche Woman',
       subtitle: '  ...WOMAN CLOTHES STORE...',
 
       buttons: [{ text: 'Book a Consultation' }],
     },
     {
-      image: '/images/image-5.jpg',
+      image: '/images/image-6.jpg',
       heading: ' Mo Niche Woman',
       subtitle: '  ...WOMAN CLOTHES STORE...',
 
       buttons: [{ text: 'Book a Consultation' }],
     },
     {
-      image: '/images/image-8.jpg',
+      image: '/images/image-1.jpg',
       heading: '  Become a Mo Niche Woman',
       subtitle: '  ...WOMAN CLOTHES...',
 

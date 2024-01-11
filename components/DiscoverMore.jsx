@@ -10,7 +10,7 @@ const DiscoverMore = () => {
 
   const discoveries = [
     {
-      image: '/images/image-8.jpg',
+      image: '/images/image-3.jpg',
       heading: '  Impact Day Dress',
       subtitle: '  Discover more',
       link: '',
@@ -22,7 +22,7 @@ const DiscoverMore = () => {
       link: '',
     },
     {
-      image: '/images/image-7.jpg',
+      image: '/images/image-10.jpg',
       heading: 'Collections - 2024',
       subtitle: '  Discover more',
       link: '',
