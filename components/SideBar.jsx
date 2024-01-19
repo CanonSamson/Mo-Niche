@@ -9,9 +9,12 @@ const SideBar = ({ viewSideBar }) => {
       } duration-300 fixed z-40 text-[14px] bg-white w-full h-screen overflow-x-auto  top-[60px] `}
     >
       <div className="grid p-2">
-        <div className=" bg-black rounded-md text-white w-full p-5 mb-5">
-          <span>New Now</span>
-        </div>
+        <Link
+          href="/"
+          className=" bg-black rounded-md text-white w-full p-5 mb-5"
+        >
+          <span>Home Page</span>
+        </Link>
 
         <div className=" flex items-center justify-between py-2">
           <div className="grid">
@@ -49,6 +52,13 @@ const SideBar = ({ viewSideBar }) => {
           <li className=" flex items-center gap-2">
             <Icon name="help" size={24} />
             <span>Help</span>
+          </li>
+
+          <li>
+            <Link href="/contactus" className=" flex items-center gap-2">
+              <Icon name="contact" size={24} />
+              <span>Contact Us</span>
+            </Link>
           </li>
         </ul>
       </div>

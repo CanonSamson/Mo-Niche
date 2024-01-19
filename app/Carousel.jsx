@@ -46,6 +46,7 @@ export default function Carousel({ autoSlideInterval = 5000 }) {
     const slideInterval = setInterval(() => setAnimeText((prev) => true), 4000)
     return () => clearInterval(slideInterval)
   }, [curr])
+  
   return (
     <header className=" justify-center items-center relative text-gray-100 flex flex-col w-full bg-gray-50 min-h-screen">
       <div className=" relative flex flex-col justify-center items-center z-20">
