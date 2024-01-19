@@ -22,11 +22,18 @@ const ContactUs = () => {
           <Input label="Name" />
           <Input label="Email" />
           <Input label="Phone" />
-          <Input label="Birthday" type="date" />
-          <Input label="Your Standard Size" type="date" />
-          <Input label="Message" type="date" />
+          <div className=' w-full '>
+            <Input label="Birthday" type="date" />
+          </div>
+          <Input label="Your Standard Size" />
+          <div>
+            <label htmlFor="" className=' font-medium'>Message</label>
+            <textarea className=' bg-white w-full border border-black rounded-none flex-1 focus:outline-none placeholder:text-black  min-h-[100px]' />
+          </div>
 
-          <button className=' bg-black text-white font-medium w-full h-[45px] mt-10'>Sned</button>
+          <button className=" bg-black text-white font-medium w-full h-[45px] mt-10">
+            Send
+          </button>
         </form>
       </section>
     </main>
