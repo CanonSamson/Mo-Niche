@@ -143,17 +143,17 @@ export default function Home() {
           <div className="  grid grid-cols-2 gap-4 mt-4">
             <div className="  flex flex-col ">
               <Image
-                src="/images/placeholder.jpg"
+         src="/products/IMG_5150.jpg"
                 width={200}
                 height={200}
                 className=" h-[250px] w-full object-cover object-top "
               />
-              <span className=" text-[14px]">after part dress product name.</span>
-              <span className=" text-">$ 200.00</span>
+              <span className=" text-[14px]">Cape Sleeve Dress.</span>
+              <span className=" text-">$ 90.00</span>
               <div className="flex items-center gap-2">
-                <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-200 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-300 rounded-full  " />
+                <span className=" flex h-[14px] w-[14px] bg-white border rounded-full  " />
+                <span className=" flex h-[14px] w-[14px] bg-sky-600 rounded-full  " />
+                <span className=" flex h-[14px] w-[14px] bg-red-500 rounded-full  " />
                 <span>+ 2 more</span>
               </div>
             </div>

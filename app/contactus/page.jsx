@@ -20,15 +20,21 @@ const ContactUs = () => {
 
         <form action="" className="grid grid-cols-1 gap-4">
           <Input label="Name" />
-          <Input label="Email" />
-          <Input label="Phone" />
-          <div className=' w-full '>
+          <Input label="Email" type="email" />
+          <Input label="Phone" type="number" />
+          <div className=" w-full ">
             <Input label="Birthday" type="date" />
           </div>
           <Input label="Your Standard Size" />
           <div>
-            <label htmlFor="" className=' font-medium'>Message</label>
-            <textarea className=' bg-white w-full border border-black rounded-none flex-1 focus:outline-none placeholder:text-black  min-h-[100px]' />
+            <label htmlFor="" className=" font-medium">
+              Message
+            </label>
+            <textarea
+              className=" p-4 bg-white w-full border border-black
+             rounded-none flex-1 focus:outline-none placeholder:text-black
+               min-h-[100px]"
+            />
           </div>
 
           <button className=" bg-black text-white font-medium w-full h-[45px] mt-10">

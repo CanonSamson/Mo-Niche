@@ -1,10 +1,8 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import { AppProvider } from "@/Context";
 
-const inter = Inter({ subsets: ["latin"] });
-
+// const roboto = Roboto({ subsets: ["latin"] });
 export const metadata = {
   title: "Mo niche Collections",
   description: "about mo niche",
@@ -20,7 +18,13 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+        />
+      </head>
+      <body>
         <AppProvider>
           {children}
           <Footer />

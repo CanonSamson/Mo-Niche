@@ -14,7 +14,7 @@ const Footer = () => {
             type="email"
           />
           <button className=" bg-gray-900 w-full text-white py-2">
-            subscribe
+            Subscribe
           </button>
         </form>
       </div>
