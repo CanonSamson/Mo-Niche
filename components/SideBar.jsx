@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Icon from './Icon'
 
-const SideBar = ({ viewSideBar }) => {
+const SideBar = ({ viewSideBar, setViewSideBar }) => {
   return (
     <div
       className={`${
@@ -10,6 +10,7 @@ const SideBar = ({ viewSideBar }) => {
     >
       <div className="grid p-2">
         <Link
+          onClick={() => setViewSideBar(false)}
           href="/"
           className=" bg-black rounded-md text-white w-full p-5 mb-5"
         >
@@ -55,7 +56,11 @@ const SideBar = ({ viewSideBar }) => {
           </li>
 
           <li>
-            <Link href="/contactus" className=" flex items-center gap-2">
+            <Link
+              onClick={() => setViewSideBar(false)}
+              href="/contactus"
+              className=" flex items-center gap-2"
+            >
               <Icon name="contact" size={24} />
               <span>Contact Us</span>
             </Link>
