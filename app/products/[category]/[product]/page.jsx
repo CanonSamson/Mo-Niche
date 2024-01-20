@@ -24,7 +24,7 @@ const Page = () => {
       relatedProduct[2],
       relatedProduct[3],
     ])
-  }, [details])
+  }, [details.uid, details.category])
   return (
     <>
       <Navbar />
