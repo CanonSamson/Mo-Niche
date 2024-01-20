@@ -14,6 +14,8 @@ import { RiTwitterXLine } from 'react-icons/ri'
 import { AiOutlineYoutube } from 'react-icons/ai'
 import { BsBag } from 'react-icons/bs'
 import { MdOutlineContactSupport } from "react-icons/md";
+import { FiPlus , FiMinus } from "react-icons/fi";
+
 const iconComponents = {
   bar: RiBarChartHorizontalLine,
   cart: CiShoppingCart,
@@ -30,7 +32,9 @@ const iconComponents = {
   youtube: AiOutlineYoutube,
   bag: BsBag,
   wishlist: CiHeart ,
-  contact: MdOutlineContactSupport
+  contact: MdOutlineContactSupport,
+  plus: FiPlus,
+  minus: FiMinus 
 }
 
 const Icon = ({ name, ...props }) => {

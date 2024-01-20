@@ -1,10 +1,14 @@
+"use client"
 import Image from 'next/image'
 import Carousel from './Carousel'
 import DiscoverMore from '@/components/DiscoverMore'
 import Link from 'next/link'
 import StickyNavBar from '@/components/StickyNavBar'
+import { useAppContext } from '@/Context'
+import Product from '@/components/Product'
 
 export default function Home() {
+  const { afterPartyDress } = useAppContext()
   return (
     <>
       <StickyNavBar />
@@ -15,7 +19,7 @@ export default function Home() {
         <section className=" px-4 mt-5">
           <div className="  items-center flex flex-col  justify-center ">
             <h3>Shop Our Bestsellers</h3>
-            <p className=' border-b border-black'>View all</p>
+            <p className=" border-b border-black">View all</p>
           </div>
 
           <div className="  grid grid-cols-2 gap-4 mt-10">
@@ -26,7 +30,9 @@ export default function Home() {
                 height={200}
                 className=" h-[250px] w-full object-cover object-top "
               />
-              <span className=" text-[14px]">Shop our bestsellers product name.</span>
+              <span className=" text-[14px]">
+                Shop our bestsellers product name.
+              </span>
               <span className=" text-">$ 200.00</span>
               <div className="flex items-center gap-2">
                 <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
@@ -43,7 +49,9 @@ export default function Home() {
                 height={200}
                 className=" h-[250px] w-full object-cover object-top "
               />
-              <span className=" text-[14px]">Shop our bestsellers product name.</span>
+              <span className=" text-[14px]">
+                Shop our bestsellers product name.
+              </span>
               <span className=" text-">$ 200.00</span>
               <div className="flex items-center gap-2">
                 <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
@@ -60,7 +68,7 @@ export default function Home() {
         <section className=" px-4 mt-20 ">
           <div className="  items-center flex flex-col  justify-center ">
             <h3>Ready To Wear</h3>
-            <p className=' border-b border-black'>View all</p>
+            <p className=" border-b border-black">View all</p>
           </div>
 
           <div className="  grid grid-cols-2 gap-4 mt-4">
@@ -137,77 +145,13 @@ export default function Home() {
         <section className=" px-4 mt-20 ">
           <div className="  items-center flex flex-col  justify-center ">
             <h3>After Part Dress</h3>
-            <p className=' border-b border-black'>View all</p>
+            <p className=" border-b border-black">View all</p>
           </div>
 
           <div className="  grid grid-cols-2 gap-4 mt-4">
-            <div className="  flex flex-col ">
-              <Image
-         src="/products/IMG_5150.jpg"
-                width={200}
-                height={200}
-                className=" h-[250px] w-full object-cover object-top "
-              />
-              <span className=" text-[14px]">Cape Sleeve Dress.</span>
-              <span className=" text-">$ 90.00</span>
-              <div className="flex items-center gap-2">
-                <span className=" flex h-[14px] w-[14px] bg-white border rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-sky-600 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-red-500 rounded-full  " />
-                <span>+ 2 more</span>
-              </div>
-            </div>
-
-            <div className="  flex flex-col ">
-              <Image
-                src="/images/placeholder.jpg"
-                width={200}
-                height={200}
-                className=" h-[250px] w-full object-cover object-top "
-              />
-              <span className=" text-[14px]">after part dress product name.</span>
-              <span className=" text-">$ 400.00</span>
-              <div className="flex items-center gap-2">
-                <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-200 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-300 rounded-full  " />
-                <span>+ 2 more</span>
-              </div>
-            </div>
-
-            <div className="  flex flex-col ">
-              <Image
-                src="/images/placeholder.jpg"
-                width={200}
-                height={200}
-                className=" h-[250px] w-full object-cover object-top "
-              />
-              <span className=" text-[14px]">after part dress product name.</span>
-              <span className=" text-">$ 630.00</span>
-              <div className="flex items-center gap-2">
-                <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-200 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-300 rounded-full  " />
-                <span>+ 2 more</span>
-              </div>
-            </div>
-
-            <div className="  flex flex-col ">
-              <Image
-                src="/images/placeholder.jpg"
-                width={200}
-                height={200}
-                className=" h-[250px] w-full object-cover object-top "
-              />
-              <span className=" text-[14px]">after part dress product name.</span>
-              <span className=" text-">$ 202.00</span>
-              <div className="flex items-center gap-2">
-                <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-200 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-300 rounded-full  " />
-                <span>+ 2 more</span>
-              </div>
-            </div>
+            {afterPartyDress.map((afterPartyDress, index) => (
+              <Product key={index} {...afterPartyDress} />
+            ))}
           </div>
         </section>
         <section className=" px-4 mt-20">

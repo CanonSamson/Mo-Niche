@@ -1,6 +1,7 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { products } from "./data/products";
 
 const AppContext = createContext();
 
@@ -10,16 +11,25 @@ export function useAppContext() {
 
 export function AppProvider({ children }) {
   const [selectedCurrency, setSelectedCurrency] = useState("NGN");
+  const [afterPartyDress, setAfterPartyDress] = useState(null);
   const [currenties, setCurrenties] = useState([
     { code: "NGN" },
     { code: "USD" },
     { code: "GBP" },
     { code: "EUR" },
   ]);
+
+  useEffect(() => {
+    const AfterPartyDress = products.filter(
+      (product) => product.category == "after-party-dress"
+    );
+    setAfterPartyDress(AfterPartyDress ?? []);
+  }, []);
   const value = {
     currenties,
     setSelectedCurrency,
     selectedCurrency,
+    afterPartyDress,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
