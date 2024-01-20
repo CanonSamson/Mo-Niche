@@ -13,7 +13,7 @@ const Page = () => {
   const [relatedProduct, setRelatedProduct] = useState(null)
 
   useEffect(() => {
-    const product = products.find((product) => product.uid == details.uid)
+    const product = products.find((product) => product.uid == details.product)
     const relatedProduct = products.filter(
       (product) => product.category == 'after-party-dress',
     )
@@ -24,7 +24,7 @@ const Page = () => {
       relatedProduct[2],
       relatedProduct[3],
     ])
-  }, [details.uid, details.category])
+  }, [details.product, details.category])
   return (
     <>
       <Navbar />
