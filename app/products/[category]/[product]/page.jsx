@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-const page = () => {
+const Page = () => {
   const details = useParams()
   const [product, setProduct] = useState(null)
   const [relatedProduct, setRelatedProduct] = useState(null)
@@ -82,4 +82,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
