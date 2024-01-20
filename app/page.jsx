@@ -149,7 +149,7 @@ export default function Home() {
           </div>
 
           <div className="  grid grid-cols-2 gap-4 mt-4">
-            {afterPartyDress.map((afterPartyDress, index) => (
+            {afterPartyDress?.map((afterPartyDress, index) => (
               <Product key={index} {...afterPartyDress} />
             ))}
           </div>
