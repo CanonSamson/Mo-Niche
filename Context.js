@@ -12,12 +12,14 @@ export function useAppContext() {
 export function AppProvider({ children }) {
   const [selectedCurrency, setSelectedCurrency] = useState("NGN");
   const [afterPartyDress, setAfterPartyDress] = useState(null);
-  const [currenties, setCurrenties] = useState([
+  const [cart, setCart] = useState([]);
+
+  const currenties = [
     { code: "NGN" },
     { code: "USD" },
     { code: "GBP" },
     { code: "EUR" },
-  ]);
+  ];
 
   useEffect(() => {
     const AfterPartyDress = products.filter(
@@ -30,6 +32,8 @@ export function AppProvider({ children }) {
     setSelectedCurrency,
     selectedCurrency,
     afterPartyDress,
+    cart,
+    setCart,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

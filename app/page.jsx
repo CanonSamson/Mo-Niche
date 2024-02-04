@@ -1,14 +1,14 @@
-"use client"
-import Image from 'next/image'
-import Carousel from './Carousel'
-import DiscoverMore from '@/components/DiscoverMore'
-import Link from 'next/link'
-import StickyNavBar from '@/components/StickyNavBar'
-import { useAppContext } from '@/Context'
-import Product from '@/components/Product'
+"use client";
+import Image from "next/image";
+import Carousel from "./Carousel";
+import DiscoverMore from "@/components/DiscoverMore";
+import Link from "next/link";
+import StickyNavBar from "@/components/StickyNavBar";
+import { useAppContext } from "@/Context";
+import Product from "@/components/Product";
 
 export default function Home() {
-  const { afterPartyDress } = useAppContext()
+  const { afterPartyDress } = useAppContext();
   return (
     <>
       <StickyNavBar />
@@ -174,5 +174,5 @@ export default function Home() {
         </section>
       </main>
     </>
-  )
+  );
 }

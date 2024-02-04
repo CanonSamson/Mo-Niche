@@ -1,18 +1,19 @@
-'use client'
+"use client";
 
-import Icon from './Icon'
-import { useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import SideBar from './SideBar'
-import { useAppContext } from '@/Context'
-import SearchBar from './SearchBar'
+import Icon from "./Icon";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import SideBar from "./SideBar";
+import { useAppContext } from "@/Context";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
-  const [viewCurrencies, setViewCurrencies] = useState(false)
-  const [viewSideBar, setViewSideBar] = useState(false)
-  const [search, setSearch] = useState(false)
-  const { currenties, setSelectedCurrency, selectedCurrency } = useAppContext()
+  const [viewCurrencies, setViewCurrencies] = useState(false);
+  const [viewSideBar, setViewSideBar] = useState(false);
+  const [search, setSearch] = useState(false);
+  const { currenties, setSelectedCurrency, selectedCurrency, cart } =
+    useAppContext();
   return (
     <nav>
       <SearchBar search={search} setSearch={setSearch} />
@@ -25,9 +26,9 @@ const Navbar = () => {
             onClick={() => setViewSideBar(!viewSideBar)}
             className=" flex items-center flex-col gap-1"
           >
-            <Icon name={!viewSideBar ? 'bar' : 'close'} size={24} />
+            <Icon name={!viewSideBar ? "bar" : "close"} size={24} />
             <span className="text-[12px]">
-              {!viewSideBar ? 'Menu' : 'Close'}
+              {!viewSideBar ? "Menu" : "Close"}
             </span>
           </button>
 
@@ -52,7 +53,7 @@ const Navbar = () => {
               <Icon
                 name="right"
                 className={`${
-                  viewCurrencies ? ' -rotate-90' : 'rotate-90'
+                  viewCurrencies ? " -rotate-90" : "rotate-90"
                 } duration-300`}
                 size={24}
               />
@@ -60,8 +61,8 @@ const Navbar = () => {
             <ul
               className={`${
                 !viewCurrencies
-                  ? '  opacity-0 invisible'
-                  : 'opacity-100 visible'
+                  ? "  opacity-0 invisible"
+                  : "opacity-100 visible"
               } right-0 border border-gray-200 duration-500 text-black absolute top-7  shadow-lg text-[14px] z-50 bg-white `}
             >
               {currenties.map(({ code }, index) => (
@@ -70,8 +71,8 @@ const Navbar = () => {
                     <li
                       key={index}
                       onClick={() => {
-                        setSelectedCurrency(code)
-                        setViewCurrencies(false)
+                        setSelectedCurrency(code);
+                        setViewCurrencies(false);
                       }}
                       className={` p-2 border-b`}
                     >
@@ -90,21 +91,22 @@ const Navbar = () => {
           <li className=" relative">
             <Link href="/login">
               <Icon name="person" size={24} />
-              <span className="flex z-10 h-[5px] w-[5px] bg-red-500 rounded-full absolute top-1 -right-1 " />
-              <span className=" animate-ping flex z-10 h-[5px] w-[5px] bg-red-500 rounded-full absolute top-1 -right-1 " />
             </Link>
           </li>
 
-          <li>
+          <li className=" relative">
             <Link href="/cart">
               <Icon name="cart" size={24} />
+              <span className="flex top-0 -right-2  text-white z-10 h-[16px] justify-center items-center text-[10px]  font-bold w-[16px] bg-red-500 rounded-full absolute  ">
+                {cart.length}
+              </span>
             </Link>
           </li>
         </ul>
       </div>
       <SideBar setViewSideBar={setViewSideBar} viewSideBar={viewSideBar} />
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
