@@ -20,7 +20,7 @@ const SideBar = ({ viewSideBar, setViewSideBar }) => {
         </Link>
         <Link
           onClick={() => setViewSideBar(false)}
-          href="/"
+          href="/book-a-consultation"
           className=" bg-gray-100 rounded-md text-black w-full px-5 py-3 mb-5"
         >
           <span>Book a Consultation</span>
