@@ -75,7 +75,7 @@ const SideBar = ({ viewSideBar, setViewSideBar }) => {
                 <Icon name="wishlist" size={24} />
                 <span>Wishlist</span>
               </div>
-              <span className="flex text-white z-10 h-[16px] justify-center items-center text-[10px]  font-bold w-[16px] bg-red-500 rounded-full   ">
+              <span className="flex text-white z-10 h-[16px] justify-center items-center text-[10px]  font-bold w-[16px] bg-gray-900 rounded-full   ">
                 0
               </span>
             </Link>

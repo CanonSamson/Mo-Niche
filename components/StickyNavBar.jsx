@@ -117,7 +117,7 @@ const StickyNavBar = () => {
           <li className=" relative">
             <Link href="/cart">
               <Icon name="cart" size={24} />
-              <span className="flex top-0 -right-2  text-white z-10 h-[16px] justify-center items-center text-[10px]  font-bold w-[16px] bg-red-500 rounded-full absolute  ">
+              <span className="flex top-0 -right-2  text-white z-10 h-[16px] justify-center items-center text-[10px]  font-bold w-[16px] bg-gray-900 rounded-full absolute  ">
                 {cart.length}
               </span>
             </Link>
