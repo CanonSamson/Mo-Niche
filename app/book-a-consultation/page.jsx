@@ -19,7 +19,7 @@ const Bookaconsultation = () => {
         />
       </header>
 
-      <div className="px-4 grid gap-2 bg-lime-100 pb-5 mb-[50px]">
+      {/* <div className="px-4 grid gap-2 bg-lime-100 pb-5 mb-[50px]">
         <h1 className="mt-5 text-2xl pb-4">
           Welcome to{" Mo Miche’s "}World of Special Occasions!
         </h1>
@@ -127,7 +127,7 @@ const Bookaconsultation = () => {
             Book Now
           </button>
         </div>
-      </div>
+      </div> */}
       <FAQ />
     </div>
   );
