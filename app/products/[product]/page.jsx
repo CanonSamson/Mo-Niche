@@ -1,7 +1,6 @@
 "use client";
 import Footer from "@/components/Footer";
-import Icon from "@/components/Icon";
-import StickyNavBar from "@/components/StickyNavBar";
+import Icon from "@/components/Icon";;
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -21,7 +20,6 @@ const Page = () => {
   }, [details.product, details.category]);
   return (
     <>
-      <StickyNavBar />
       <div className=" pt-[60px] font-sans font-light  pb-20">
         <div className=" bg-gray-100 py-5 flex justify-center mb-5">
           <span>

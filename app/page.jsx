@@ -3,7 +3,6 @@ import Image from "next/image";
 import Carousel from "./Carousel";
 import DiscoverMore from "@/components/DiscoverMore";
 import Link from "next/link";
-import StickyNavBar from "@/components/StickyNavBar";
 import Product from "@/components/Product";
 import Footer from "@/components/Footer";
 import { useSelector } from "react-redux";
@@ -13,8 +12,6 @@ export default function Home() {
 
   return (
     <>
-      <StickyNavBar />
-
       <main className=" pb-[100px] font-light font-sans">
         <Carousel />
 
@@ -25,9 +22,9 @@ export default function Home() {
               <h2 className=" mt-4 text-[20px]">Shop our Favourites</h2>
             </div>
             <p>
-              Mo Niche Collection, a brand that sells women&apos;s clothes, combines
-              creativity and helping society. It cares about more than just
-              making money; it wants to help the country grow too. Mo Niche
+              Mo Niche Collection, a brand that sells women&apos;s clothes,
+              combines creativity and helping society. It cares about more than
+              just making money; it wants to help the country grow too. Mo Niche
               Collection, works hard to improve communities and make Nigeria
               better. passion and creativity make big things happen in the
               fashion world.
@@ -120,7 +117,6 @@ export default function Home() {
           </div>
         </section>
 
-      
         <section className=" px-4 mt-20">
           <div className="flex flex-col text-white h-[320px] pb-10 bg-black w-full justify-end items-center p-4 px-4 relative">
             <Image
