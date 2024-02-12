@@ -16,9 +16,10 @@ const Product = ({ images, name, price, currency, category, uid }) => {
         {currency == "USD" && "$"} {price}
       </span>
       <div className="flex items-center gap-2">
-        <span className=" flex h-[14px] w-[14px] bg-white border rounded-full" />
-        <span className=" flex h-[14px] w-[14px] bg-sky-600 rounded-full" />
-        <span className=" flex h-[14px] w-[14px] bg-gray-900 rounded-full" />
+        <span className=" flex h-[14px] w-[14px] bg-white border rounded-full  " />
+        <span className=" flex h-[14px] w-[14px] bg-sky-600 rounded-full  " />
+        <span className=" flex h-[14px] w-[14px] bg-gray-900 rounded-full  " />
+        <span>+ 2 more</span>
       </div>
     </Link>
   );

@@ -51,7 +51,7 @@ const SideBar = ({ viewSideBar, setViewSideBar }) => {
           } relative  duration-700 overflow-hidden`}
         >
           <li className=" border-b p-2 ">Ready To Wear</li>
-          <li className="  p-2 border-b ">After Part Dress</li>
+          <li className="  p-2 border-b ">After Party Dress</li>
           <li className="  p-2 border-b ">MoNiche Lady</li>
           <li className="  p-2 border-b ">2022 Collections</li>
         </ul>
