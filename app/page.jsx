@@ -25,7 +25,7 @@ export default function Home() {
               <h2 className=" mt-4 text-[20px]">Shop our Favourites</h2>
             </div>
             <p>
-              Mo Niche Collection, a brand that sells women's clothes, combines
+              Mo Niche Collection, a brand that sells women&apos;s clothes, combines
               creativity and helping society. It cares about more than just
               making money; it wants to help the country grow too. Mo Niche
               Collection, works hard to improve communities and make Nigeria
@@ -120,18 +120,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className=" px-4 mt-20 ">
-          <div className="  items-center flex flex-col  justify-center ">
-            <h3>After Part Dress</h3>
-            <p className=" border-b border-black">View all</p>
-          </div>
-
-          <div className="  grid grid-cols-2 gap-4 mt-4">
-            {afterPartyDress?.map((afterPartyDress, index) => (
-              <Product key={index} {...afterPartyDress} />
-            ))}
-          </div>
-        </section>
+      
         <section className=" px-4 mt-20">
           <div className="flex flex-col text-white h-[320px] pb-10 bg-black w-full justify-end items-center p-4 px-4 relative">
             <Image
