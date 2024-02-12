@@ -5,17 +5,28 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SideBar from "./SideBar";
-import { useAppContext } from "@/Context";
 import SearchBar from "./SearchBar";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrency } from "@/Redux/appSlice";
+import { usePathname } from "next/navigation";
 
 const StickyNavBar = () => {
   const [scroll, setScroll] = useState(false);
   const [viewCurrencies, setViewCurrencies] = useState(false);
   const [viewSideBar, setViewSideBar] = useState(false);
-  const { currenties, setSelectedCurrency, selectedCurrency, cart } =
-    useAppContext();
+  const pathname = usePathname;
+  const { currenties, currency } = useSelector((state) => state.app);
+  const { items: cart } = useSelector((state) => state.cart);
+
+  const dispatch = useDispatch();
   const [search, setSearch] = useState(false);
+
   useEffect(() => {
+    if (pathname != "/") {
+      setScroll(true);
+
+      return;
+    }
     const handleScroll = () => {
       if (window.scrollY > 0) {
         setScroll(true);
@@ -24,10 +35,8 @@ const StickyNavBar = () => {
       }
     };
 
-    // Attach the event listener
     window.addEventListener("scroll", handleScroll);
 
-    // Remove the event listener when the component is unmounted
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -69,7 +78,7 @@ const StickyNavBar = () => {
               onClick={() => setViewCurrencies(!viewCurrencies)}
               className=" text-[14px] flex items-center  relative"
             >
-              <span>{selectedCurrency}</span>
+              <span>{currency}</span>
               <Icon
                 name="right"
                 className={`${
@@ -83,15 +92,15 @@ const StickyNavBar = () => {
                 !viewCurrencies
                   ? "  opacity-0 invisible"
                   : "opacity-100 visible"
-              } right-0 border border-gray-200 duration-500 text-black absolute top-7  shadow-lg text-[14px] z-50 bg-white `}
+              } right-0 border hover:cursor-pointer border-gray-200 duration-500 text-black absolute top-7  shadow-lg text-[14px] z-50 bg-white `}
             >
               {currenties.map(({ code }, index) => (
                 <>
-                  {selectedCurrency != code && (
+                  {currency != code && (
                     <li
                       key={index}
                       onClick={() => {
-                        setSelectedCurrency(code);
+                        dispatch(setCurrency(code));
                         setViewCurrencies(false);
                       }}
                       className={` p-2 border-b`}
@@ -118,7 +127,7 @@ const StickyNavBar = () => {
             <Link href="/cart">
               <Icon name="cart" size={24} />
               <span className="flex top-0 -right-2  text-white z-10 h-[16px] justify-center items-center text-[10px]  font-bold w-[16px] bg-gray-900 rounded-full absolute  ">
-                {cart.length}
+                {cart.length ?? 0}
               </span>
             </Link>
           </li>

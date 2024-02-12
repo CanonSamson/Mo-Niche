@@ -4,62 +4,40 @@ import Carousel from "./Carousel";
 import DiscoverMore from "@/components/DiscoverMore";
 import Link from "next/link";
 import StickyNavBar from "@/components/StickyNavBar";
-import { useAppContext } from "@/Context";
 import Product from "@/components/Product";
+import Footer from "@/components/Footer";
+import { useSelector } from "react-redux";
 
 export default function Home() {
-  const { afterPartyDress } = useAppContext();
+  const { recommended } = useSelector((state) => state.app);
+
   return (
     <>
       <StickyNavBar />
 
-      <main className=" pb-[100px]">
+      <main className=" pb-[100px] font-light font-sans">
         <Carousel />
 
-        <section className=" px-4 mt-5">
-          <div className="  items-center flex flex-col  justify-center ">
-            <h3>Shop Our Bestsellers</h3>
-            <p className=" border-b border-black">View all</p>
+        <section className=" text-[14px] font-light px-4 mt-10">
+          <div>
+            <div className=" pb-10">
+              <span>BESTSELLERS</span>
+              <h2 className=" mt-4 text-[20px]">Shop our Favourites</h2>
+            </div>
+            <p>
+              Mo Niche Collection, a brand that sells women's clothes, combines
+              creativity and helping society. It cares about more than just
+              making money; it wants to help the country grow too. Mo Niche
+              Collection, works hard to improve communities and make Nigeria
+              better. passion and creativity make big things happen in the
+              fashion world.
+            </p>
           </div>
 
           <div className="  grid grid-cols-2 gap-4 mt-10">
-            <div className="  flex flex-col ">
-              <Image
-                src="/images/placeholder.jpg"
-                width={200}
-                height={200}
-                className=" h-[250px] w-full object-cover object-top "
-              />
-              <span className=" text-[14px]">
-                Shop our bestsellers product name.
-              </span>
-              <span className=" text-">$ 200.00</span>
-              <div className="flex items-center gap-2">
-                <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-200 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-300 rounded-full  " />
-                <span>+ 2 more</span>
-              </div>
-            </div>
-
-            <div className="  flex flex-col ">
-              <Image
-                src="/images/placeholder.jpg"
-                width={200}
-                height={200}
-                className=" h-[250px] w-full object-cover object-top "
-              />
-              <span className=" text-[14px]">
-                Shop our bestsellers product name.
-              </span>
-              <span className=" text-">$ 200.00</span>
-              <div className="flex items-center gap-2">
-                <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-200 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-300 rounded-full  " />
-                <span>+ 2 more</span>
-              </div>
-            </div>
+            {recommended.map((product, index) => (
+              <Product key={index} {...product} />
+            ))}
           </div>
 
           <DiscoverMore />
@@ -142,18 +120,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className=" px-4 mt-20 ">
-          <div className="  items-center flex flex-col  justify-center ">
-            <h3>After Part Dress</h3>
-            <p className=" border-b border-black">View all</p>
-          </div>
-
-          <div className="  grid grid-cols-2 gap-4 mt-4">
-            {afterPartyDress?.map((afterPartyDress, index) => (
-              <Product key={index} {...afterPartyDress} />
-            ))}
-          </div>
-        </section>
         <section className=" px-4 mt-20">
           <div className="flex flex-col text-white h-[320px] pb-10 bg-black w-full justify-end items-center p-4 px-4 relative">
             <Image
@@ -173,6 +139,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

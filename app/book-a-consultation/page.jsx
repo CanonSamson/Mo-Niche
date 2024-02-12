@@ -1,11 +1,9 @@
 import FAQ from "@/components/FAQ";
-import Navbar from "@/components/Navbar";
 import Image from "next/image";
 
 const Bookaconsultation = () => {
   return (
     <div>
-      <Navbar />
       <header className="relative text-white w-full h-[300px] bg-gray-800 flex items-center justify-center px-4">
         <h1 className="relative z-[2] text-4xl font-medium">
           Book a Consultation

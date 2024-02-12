@@ -26,7 +26,7 @@ const Footer = () => {
         <li>Shops</li>
         <li>Company</li>
         <li>Franchises</li>
-        <li>Becomee a Mo Niche Woman</li>
+        <li>Become a Mo Niche Lady</li>
         <li>Press</li>
         <li>Site map</li>
         <li>Sustainability</li>

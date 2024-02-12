@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar"
+
 
 export const metadata = {
   title: 'WishList - Mo niche Collections',
@@ -7,7 +7,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <>
-      <Navbar />
       {children}
     </>
   )
