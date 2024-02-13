@@ -1,16 +1,47 @@
 "use client";
+import { addItem, updateQuantity } from "@/Redux/cartSlice";
 import Footer from "@/components/Footer";
-import Icon from "@/components/Icon";;
+import Icon from "@/components/Icon";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { GoPlus } from "react-icons/go";
+import { AiOutlineMinus } from "react-icons/ai";
 
 const Page = () => {
   const details = useParams();
   const [product, setProduct] = useState(null);
   const { recommended } = useSelector((state) => state.app);
+
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    // Step 4: Function to handle adding the product to the cart
+    if (product) {
+      // You can adjust the quantity as needed
+      const itemToAdd = {
+        id: product.id,
+        product,
+        quantity: 1, // Default quantity is 1, you can change it as needed
+      };
+      dispatch(addItem(itemToAdd)); // Step 5: Dispatching the addItem action
+    }
+  };
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+      dispatch(updateQuantity({ id: product.id, quantity: quantity - 1 }));
+    }
+  };
+
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+    dispatch(updateQuantity({ id: product.id, quantity: quantity + 1 }));
+  };
+
   useEffect(() => {
     const product = recommended.find(
       (product) => product.uid == details.product
@@ -44,12 +75,19 @@ const Page = () => {
         </div>
 
         <div className="flex items-center gap-2 mt-10 px-2">
-          <div className=" border items-center   h-[50px] border-gray-900 text-xl flex ">
-            <span className=" px-4 ">-</span>
-            <span className=" px-3">0</span>
-            <span className=" px-3">+</span>
+          <div className="border items-center h-[50px] border-gray-900 text-xl flex">
+            <span className="px-4" onClick={decreaseQuantity}>
+              <AiOutlineMinus />
+            </span>
+            <span className="px-3">{quantity}</span>
+            <button className="px-3" onClick={increaseQuantity}>
+              <GoPlus />
+            </button>
           </div>
-          <button className="p-4  bg-gray-900 h-[50px] mr-4 flex items-center  text-white ">
+          <button
+            onClick={handleAddToCart}
+            className="p-4  bg-gray-900 h-[50px] mr-4 flex items-center  text-white "
+          >
             Add to Cart
           </button>
           <button>

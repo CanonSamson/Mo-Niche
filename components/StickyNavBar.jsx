@@ -14,7 +14,7 @@ const StickyNavBar = () => {
   const [scroll, setScroll] = useState(false);
   const [viewCurrencies, setViewCurrencies] = useState(false);
   const [viewSideBar, setViewSideBar] = useState(false);
-  const pathname = usePathname;
+  const pathname = usePathname();
   const { currenties, currency } = useSelector((state) => state.app);
   const { items: cart } = useSelector((state) => state.cart);
 
@@ -22,10 +22,8 @@ const StickyNavBar = () => {
   const [search, setSearch] = useState(false);
 
   useEffect(() => {
-    if (pathname != "/") {
+    if (pathname !== "/") {
       setScroll(true);
-
-      return;
     }
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -35,12 +33,14 @@ const StickyNavBar = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    if (pathname === "/") {
+      window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [pathname]);
 
   return (
     <nav>
@@ -61,7 +61,7 @@ const StickyNavBar = () => {
             </span>
           </button>
 
-          <Link href="/">
+          <Link onClick={() => setViewSideBar(false)} href="/">
             <Image
               src={!scroll ? "/logo-white.svg" : "/logo-black.svg"}
               className=" w-[120px]"

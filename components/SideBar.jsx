@@ -57,7 +57,11 @@ const SideBar = ({ viewSideBar, setViewSideBar }) => {
         </ul>
         <ul className=" grid mt-10 gap-4">
           <li>
-            <Link href="/login" className=" flex items-center gap-2">
+            <Link
+              onClick={() => setViewSideBar(false)}
+              href="/login"
+              className=" flex items-center gap-2"
+            >
               <Icon name="person" size={24} />
               <span>Sign in | Create account</span>
             </Link>
@@ -68,6 +72,7 @@ const SideBar = ({ viewSideBar, setViewSideBar }) => {
           </li>
           <li>
             <Link
+              onClick={() => setViewSideBar(false)}
               href="/wishlist"
               className=" flex items-center  justify-between"
             >
