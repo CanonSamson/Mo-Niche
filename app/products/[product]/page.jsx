@@ -24,7 +24,7 @@ const Page = () => {
   const handleAddToCart = () => {
     if (product) {
       const itemToAdd = {
-        id: product.id,
+        id: product.uid,
         product,
         quantity: 1,
       };
@@ -35,13 +35,13 @@ const Page = () => {
   const decreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
-      dispatch(updateQuantity({ id: product.id, quantity: quantity - 1 }));
+      dispatch(updateQuantity({ id: product.uid, quantity: quantity - 1 }));
     }
   };
 
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
-    dispatch(updateQuantity({ id: product.id, quantity: quantity + 1 }));
+    dispatch(updateQuantity({ id: product.uid, quantity: quantity + 1 }));
   };
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const Page = () => {
 
   // Check if the product is already in the cart
   const isProductInCart =
-    product && cartItems.some((item) => item.id === product.id);
+    product && cartItems.some((item) => item.id === product.uid);
 
   return (
     <>
