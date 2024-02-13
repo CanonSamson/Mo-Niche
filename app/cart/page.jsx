@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Icon from "@/components/Icon";
 import Link from "next/link";
 import { removeItem, updateQuantity } from "@/Redux/cartSlice";
+import Image from "next/image";
+import { AiOutlineMinus } from "react-icons/ai";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -35,46 +37,51 @@ const Cart = () => {
     return items.map((item) => (
       <div
         key={item.id}
-        className=" flex  font-sans font-light justify-between items-center border-b pb-2 mb-4"
+        className=" flex gap-4 pb-4 font-sans font-light justify-between items-center border-b "
       >
         {/* Product image */}
-        <img
-          src={item.product.images[0]}
-          alt="Product"
-          className="w-16 h-16 object-contain "
-        />
+        <div className=" flex flex-1 gap-2 items-center">
+          <Image
+            src={item.product.images[0]}
+            alt="Product"
+            className="w-16 h-16 object-contain "
+            width={100}
+            height={100}
+          />
 
-        <div className="">
-          {/* Product name */}
-          <span className="block  font-semibold">Product Name</span>
-          {/* Product details (e.g., size, stock) */}
-          <span className="block text-sm text-gray-500">
-            Size: Regular UK 8, 4 in stock
-          </span>
-          <div className=" flex items-center gap-2 mt-2">
-            <div className="flex font-semibold items-start gap-2">
-              <button
-                onClick={() => increaseQuantity(item.id)}
-                className="flex items-center justify-center h-[20px] border border-gray-900 text-gray-900 w-[24px] w-ful py-2"
-              >
-                <Icon name="plus" size={16} />
-              </button>
-              <button className="flex items-center justify-center h-[20px] border border-gray-900 text-gray-900 w-[24px] min-w-ful py-2">
-                {item.quantity}
-              </button>
-              <button
-                onClick={() => decreaseQuantity(item.id)}
-                className="flex items-center justify-center h-[20px] border border-gray-900 text-gray-900 w-[24px] w-ful py-2"
-              >
-                <Icon name="minus" size={16} />
-              </button>
+          <div className="">
+            {/* Product name */}
+            <span className="block text-[14px] leading-none font-medium">
+              {item.product.name}
+            </span>
+            {/* Product details (e.g., size, stock) */}
+            <span className="block text-[12px] text-gray-500">
+              Size: Regular UK 8, 4 in stock
+            </span>
+            <div className=" flex items-center  gap-2 mt-2">
+              <div className="flex font-semibold border items-start gap-2">
+                <button
+                  onClick={() => increaseQuantity(item.id)}
+                  className="flex items-center justify-center h-[30px] text-gray-900 w-[24px] w-ful py-2"
+                >
+                  <Icon name="plus" size={16} />
+                </button>
+                <button className="flex items-center justify-center h-[30px] text-gray-900 w-[24px] min-w-ful py-2">
+                  {item.quantity}
+                </button>
+                <button
+                  onClick={() => decreaseQuantity(item.id)}
+                  className="flex items-center justify-center h-[30px] text-gray-900 w-[24px] w-ful py-2"
+                >
+                  <AiOutlineMinus size={16} />
+                </button>
+              </div>
+
+              {/* Remove item button */}
+              <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
             </div>
-
-            {/* Remove item button */}
-            <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
           </div>
         </div>
-
         {/* Product price */}
         <div>
           <span className="block text-lg font-semibold">
@@ -86,7 +93,10 @@ const Cart = () => {
   };
 
   const calculateSubtotal = () => {
-    return items.reduce((total, item) => total + item.price * item.quantity, 0);
+    return items.reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0
+    );
   };
 
   return (

@@ -1,4 +1,5 @@
 "use client";
+
 import { addItem, updateQuantity } from "@/Redux/cartSlice";
 import Footer from "@/components/Footer";
 import Icon from "@/components/Icon";
@@ -13,23 +14,24 @@ import { AiOutlineMinus } from "react-icons/ai";
 const Page = () => {
   const details = useParams();
   const [product, setProduct] = useState(null);
-  const { recommended } = useSelector((state) => state.app);
-
+  const { recommended, cartItems } = useSelector((state) => ({
+    recommended: state.app.recommended,
+    cartItems: state.cart.items,
+  }));
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    // Step 4: Function to handle adding the product to the cart
     if (product) {
-      // You can adjust the quantity as needed
       const itemToAdd = {
         id: product.id,
         product,
-        quantity: 1, // Default quantity is 1, you can change it as needed
+        quantity: 1,
       };
-      dispatch(addItem(itemToAdd)); // Step 5: Dispatching the addItem action
+      dispatch(addItem(itemToAdd));
     }
   };
+
   const decreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
@@ -46,34 +48,36 @@ const Page = () => {
     const product = recommended.find(
       (product) => product.uid == details.product
     );
-
     setProduct(product);
   }, [details.product, details.category]);
+
+  // Check if the product is already in the cart
+  const isProductInCart =
+    product && cartItems.some((item) => item.id === product.id);
+
   return (
     <>
-      <div className=" pt-[60px] font-sans font-light  pb-20">
-        <div className=" bg-gray-100 py-5 flex justify-center mb-5">
+      <div className="pt-[60px] font-sans font-light pb-20">
+        <div className="bg-gray-100 py-5 flex justify-center mb-5">
           <span>
             <Link href="/">HOME</Link> /{" "}
             <Link href="/products"> OTHER PRODUCTS</Link>
           </span>
         </div>
-
-        <img
+        <Image
           src={product?.images[0]}
           width={300}
           height={300}
-          className=" h-auto  bg-gray-100 w-full object-cover"
+          className="h-auto bg-gray-100 w-full object-cover"
+          alt={product?.name}
         />
-
-        <div className=" px-2 mt-5">
-          <h1 className=" text-2xl ">{product?.name}</h1>
-          <div className=" text-2xl py-2 mb-4">
+        <div className="px-2 mt-5">
+          <h1 className="text-2xl">{product?.name}</h1>
+          <div className="text-2xl py-2 mb-4">
             {product?.currency == "USD" && "$"} {product?.price}
           </div>
           <p>{product?.description}</p>
         </div>
-
         <div className="flex items-center gap-2 mt-10 px-2">
           <div className="border items-center h-[50px] border-gray-900 text-xl flex">
             <span className="px-4" onClick={decreaseQuantity}>
@@ -86,16 +90,18 @@ const Page = () => {
           </div>
           <button
             onClick={handleAddToCart}
-            className="p-4  bg-gray-900 h-[50px] mr-4 flex items-center  text-white "
+            className={`p-4 bg-gray-900 h-[50px] mr-4 flex items-center text-white ${
+              isProductInCart && "opacity-50 cursor-not-allowed"
+            }`}
+            disabled={isProductInCart}
           >
-            Add to Cart
+            {isProductInCart ? "Already in Cart" : "Add to Cart"}
           </button>
           <button>
             <Icon name="wishlist" size={24} />
           </button>
         </div>
-
-        <div className=" mt-10 px-2"></div>
+        <div className="mt-10 px-2"></div>
       </div>
       <Footer />
     </>
