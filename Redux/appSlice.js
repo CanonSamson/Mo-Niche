@@ -33,7 +33,7 @@ const initialState = {
   bestsellers: [
     {
       images: ["/IMG_5388.jpg"],
-      name: "Cape Sleeve Dress custom made",
+      name: "ad minima veniam, quis nostrum exercitationem",
       price: "90.00",
       currency: "USD",
       category: "",

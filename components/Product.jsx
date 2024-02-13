@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-
-const Product = ({ images, name, price, currency, category, uid }) => {
+const Product = ({ images, name, price, currency, category, id }) => {
   return (
-    <Link href={`/products/${uid}`} className="  flex flex-col ">
-      <img
+    <Link href={`/products/${id}`} className="  flex flex-col ">
+      <Image
         src={images[0]}
-        width={200}
-        height={200}
+        width={500}
+        height={500}
         className=" h-[250px] w-full object-cover object-top "
+        alt="product"
       />
       <span className=" text-[14px]">{name}</span>
       <span className=" text-">
@@ -18,7 +18,7 @@ const Product = ({ images, name, price, currency, category, uid }) => {
       <div className="flex items-center gap-2">
         <span className=" flex h-[14px] w-[14px] bg-white border rounded-full  " />
         <span className=" flex h-[14px] w-[14px] bg-sky-600 rounded-full  " />
-        <span className=" flex h-[14px] w-[14px] bg-gray-900 rounded-full  " />
+        {/* <span className=" flex h-[14px] w-[14px] bg-gray-900 rounded-full  " /> */}
         <span>+ 2 more</span>
       </div>
     </Link>

@@ -12,7 +12,7 @@ const Cart = () => {
 
   // Function to handle increasing quantity
   const increaseQuantity = (id) => {
-    const item = items.find((item) => item.id === id);
+    const item = items.find((item) => item.product.id === id);
     if (item) {
       const newQuantity = item.quantity + 1;
       dispatch(updateQuantity({ id, quantity: newQuantity }));
@@ -21,7 +21,7 @@ const Cart = () => {
 
   // Function to handle decreasing quantity
   const decreaseQuantity = (id) => {
-    const item = items.find((item) => item.id === id);
+    const item = items.find((item) => item.product.id === id);
     if (item && item.quantity > 1) {
       const newQuantity = item.quantity - 1;
       dispatch(updateQuantity({ id, quantity: newQuantity }));
