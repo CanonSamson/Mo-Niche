@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import { useSelector } from "react-redux";
 
 export default function Home() {
-  const { recommended } = useSelector((state) => state.app);
+  const { recommended, bestsellers } = useSelector((state) => state.app);
 
   return (
     <>
@@ -42,78 +42,14 @@ export default function Home() {
 
         <section className=" px-4 mt-20 ">
           <div className="  items-center flex flex-col  justify-center ">
-            <h3>Ready To Wear</h3>
+            <h3>Shop our bestsellers</h3>
             <p className=" border-b border-black">View all</p>
           </div>
 
           <div className="  grid grid-cols-2 gap-4 mt-4">
-            <div className="  flex flex-col ">
-              <Image
-                src="/images/placeholder.jpg"
-                width={200}
-                height={200}
-                className=" h-[250px] w-full object-cover object-top "
-              />
-              <span className=" text-[14px]"> Ready to wear product name.</span>
-              <span className=" text-">$ 120.00</span>
-              <div className="flex items-center gap-2">
-                <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-200 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-300 rounded-full  " />
-                <span>+ 2 more</span>
-              </div>
-            </div>
-
-            <div className="  flex flex-col ">
-              <Image
-                src="/images/placeholder.jpg"
-                width={200}
-                height={200}
-                className=" h-[250px] w-full object-cover object-top "
-              />
-              <span className=" text-[14px]"> Ready to wear product name.</span>
-              <span className=" text-">$ 200.00</span>
-              <div className="flex items-center gap-2">
-                <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-200 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-300 rounded-full  " />
-                <span>+ 2 more</span>
-              </div>
-            </div>
-
-            <div className="  flex flex-col ">
-              <Image
-                src="/images/placeholder.jpg"
-                width={200}
-                height={200}
-                className=" h-[250px] w-full object-cover object-top "
-              />
-              <span className=" text-[14px]"> Ready to wear product name.</span>
-              <span className=" text-">$ 40.00</span>
-              <div className="flex items-center gap-2">
-                <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-200 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-300 rounded-full  " />
-                <span>+ 2 more</span>
-              </div>
-            </div>
-
-            <div className="  flex flex-col ">
-              <Image
-                src="/images/placeholder.jpg"
-                width={200}
-                height={200}
-                className=" h-[250px] w-full object-cover object-top "
-              />
-              <span className=" text-[14px]"> Ready to wear product name.</span>
-              <span className=" text-">$ 290.00</span>
-              <div className="flex items-center gap-2">
-                <span className=" flex h-[14px] w-[14px] bg-gray-500 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-200 rounded-full  " />
-                <span className=" flex h-[14px] w-[14px] bg-gray-300 rounded-full  " />
-                <span>+ 2 more</span>
-              </div>
-            </div>
+            {bestsellers.map((product, index) => (
+              <Product key={index} {...product} />
+            ))}
           </div>
         </section>
 
