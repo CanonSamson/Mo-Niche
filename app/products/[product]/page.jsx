@@ -46,14 +46,14 @@ const Page = () => {
 
   useEffect(() => {
     const product = recommended.find(
-      (product) => product.id == details.product
+      (product) => product.uid == details.product
     );
     setProduct(product);
   }, [details.product, details.category]);
 
   // Check if the product is already in the cart
   const isProductInCart =
-    product && cartItems.some((item) => item.product.id === product.id);
+    product && cartItems.some((item) => item.id === product.id);
 
   return (
     <>
