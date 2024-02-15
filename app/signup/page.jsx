@@ -114,8 +114,8 @@ const Signup = () => {
           </button>
 
           <span>
-            By clicking on 'Create account', you accept our Confidentiality
-            Policy.
+            By clicking on &apos;Create account&apos;, you accept our
+            Confidentiality Policy.
           </span>
           <span className="text-[12px] mt-2 flex gap-2">
             <Link
