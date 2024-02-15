@@ -37,7 +37,7 @@ const initialState = {
       price: "90.00",
       currency: "USD",
       category: "",
-      uid: "13",
+      uid: "1d3",
       description:
         " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
     },
@@ -47,7 +47,7 @@ const initialState = {
       price: "100.00",
       currency: "USD",
       category: "",
-      uid: "1203",
+      uid: "12d03",
       description:
         " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
     },
@@ -57,7 +57,7 @@ const initialState = {
       price: "60.00",
       currency: "USD",
       category: "",
-      uid: "1203",
+      uid: "120w3",
       description:
         " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
     },

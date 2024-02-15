@@ -14,7 +14,8 @@ import { AiOutlineMinus } from "react-icons/ai";
 const Page = () => {
   const details = useParams();
   const [product, setProduct] = useState(null);
-  const { recommended, cartItems } = useSelector((state) => ({
+  const { recommended, bestsellers, cartItems } = useSelector((state) => ({
+    bestsellers: state.app.bestsellers,
     recommended: state.app.recommended,
     cartItems: state.cart.items,
   }));
@@ -45,9 +46,8 @@ const Page = () => {
   };
 
   useEffect(() => {
-    const product = recommended.find(
-      (product) => product.uid == details.product
-    );
+    const products = [...bestsellers, ...recommended];
+    const product = products.find((product) => product.uid == details.product);
     setProduct(product);
   }, [details.product, details.category]);
 
