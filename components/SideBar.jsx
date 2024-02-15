@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const SideBar = ({ viewSideBar, setViewSideBar }) => {
   const [viewCollections, setViewCollections] = useState(false);
+  const [viewShopLocation, setViewShopLocation] = useState(false);
   return (
     <div
       className={`${
@@ -85,11 +86,31 @@ const SideBar = ({ viewSideBar, setViewSideBar }) => {
               </span>
             </Link>
           </li>
-          <li className=" flex items-center gap-2">
-            <Icon name="store" size={24} />
-            <span>Store locator</span>
+          <li className=" ">
+            <button
+              onClick={() => setViewShopLocation(!viewShopLocation)}
+              className="flex items-center gap-2"
+            >
+              <Icon name="store" size={24} />
+              <span>Store locator</span>
+            </button>
           </li>
-
+          <a
+            href="https://maps.app.goo.gl/rUNjdV1pm4makjC49?g_st=ic"
+            className={` ${
+              viewShopLocation ? " h-[130px]" : " h-0  min-h-0"
+            } overflow-y-hidden  duration-500 flex flex-col gap-[4px]  bg-gray-50 px-4  justify-center`}
+          >
+            <span>Suite D21A Emmanuel plaza Utako</span>
+            <span className="  uppercase">Abuja 900108</span>
+            <span className="  uppercase">08055981993</span>
+            <div className=" flex ">
+              <span className=" pr-3 flex border-r border-gray-500 ">
+                Opening hours
+              </span>
+              <span className=" flex pl-3">View map</span>
+            </div>
+          </a>
           <li className=" flex items-center gap-2">
             <Icon name="help" size={24} />
             <span>Help</span>

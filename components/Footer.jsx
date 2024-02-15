@@ -38,7 +38,7 @@ const Footer = () => {
           <Icon size={24} name="facebook" />
         </li>
         <li>
-          <a href="https://www.instagram.com/house_of_mo_niche?igsh=dG12bXFtcmUwZGJp">
+          <a href="https://www.instagram.com/house_of_mo_niche/">
             <Icon size={24} name="instagram" />
           </a>
         </li>

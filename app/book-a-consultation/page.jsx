@@ -126,7 +126,7 @@ const Bookaconsultation = () => {
           </button>
         </div>
       </div> */}
-      <FAQ />
+      {/* <FAQ /> */}
     </div>
   );
 };

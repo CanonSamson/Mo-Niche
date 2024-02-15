@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Product = ({ images, name, price, currency, category, id }) => {
+const Product = ({ images, name, price, currency, category, uid }) => {
   return (
-    <Link href={`/products/${id}`} className="  flex flex-col ">
+    <Link href={`/products/${uid}`} className="  flex flex-col ">
       <Image
         src={images[0]}
         width={500}

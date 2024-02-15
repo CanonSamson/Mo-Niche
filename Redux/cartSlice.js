@@ -11,10 +11,8 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      const { id, quantity } = action.payload;
-      const existingItemIndex = state.items.findIndex(
-        (item) => item.product.id === id
-      );
+      const { id, quantity, product } = action.payload;
+      const existingItemIndex = state.items.findIndex((item) => item.id == id);
 
       if (existingItemIndex !== -1) {
         state.items[existingItemIndex].quantity += quantity;
@@ -30,7 +28,7 @@ export const cartSlice = createSlice({
     },
     updateQuantity: (state, action) => {
       const { id, quantity } = action.payload;
-      const itemIndex = state.items.findIndex((item) => item.product.id === id);
+      const itemIndex = state.items.findIndex((item) => item.id == id);
 
       if (itemIndex !== -1) {
         state.items[itemIndex].quantity = quantity;
