@@ -3,6 +3,7 @@ import { MdOutlineForwardToInbox } from "react-icons/md";
 import { GiClothes } from "react-icons/gi";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { RiAccountPinCircleLine } from "react-icons/ri";
+import Icon from "@/components/Icon";
 
 const Account = () => {
   return (
@@ -37,6 +38,16 @@ const Account = () => {
           </span>
         </div>
         <ul className=" grid gap-2">
+          <li className="">
+            <Link
+              className=" flex items-center h-[55px]  border px-4  gap-4"
+              href=""
+            >
+              <Icon name="person" size={24} />
+
+              <span>My Info</span>
+            </Link>
+          </li>
           <li className="">
             <Link
               className=" flex items-center h-[55px]  border px-4  gap-4"

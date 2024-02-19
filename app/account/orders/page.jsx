@@ -1,50 +1,52 @@
-"use client"
+"use client";
 import { useState } from "react";
+import OrderCard from "./OrderCard"; // Import the OrderCard component
 
 const OrderHistory = () => {
-  // Assume order history data is fetched from an API or context
   const [orderHistory, setOrderHistory] = useState([
     {
       id: 1,
       date: "2022-08-15",
       products: [
-        { id: 1, name: "T-shirt", price: 25.0, quantity: 2 },
-        { id: 2, name: "Jeans", price: 50.0, quantity: 1 },
+        {
+          id: 1,
+          price: 25.0,
+          quantity: 2,
+          product: {
+            images: ["/images/image-8.jpg"],
+            name: "Cape Sleeve Dress custom made",
+            price: "90.00",
+            currency: "USD",
+            category: "",
+            uid: "1233",
+            description:
+              " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+          },
+        },
       ],
       total: 100.0,
-    },
-    {
-      id: 2,
-      date: "2022-09-20",
-      products: [
-        { id: 3, name: "Sweater", price: 35.0, quantity: 1 },
-        { id: 4, name: "Jacket", price: 70.0, quantity: 1 },
-      ],
-      total: 105.0,
     },
   ]);
 
   return (
     <div className="pt-[100px] pb-[150px] w-full z-4 relative px-4">
       <div className="bg-white min-h-[300px] min-w-[300px] w-full flex flex-col">
-        <h1 className="text-center text-2xl">Order History</h1>
+        <h1 className="text-center text-2xl">My Orders</h1>
+
+        <div className="grid grid-cols-3 border-b  mt-10">
+          <button className=" h-[45px] flex items-center border-b border-black justify-center">
+            Active
+          </button>
+          <button className=" h-[45px] flex items-center justify-center">
+            Cancelled
+          </button>
+          <button className=" h-[45px] flex items-center justify-center">
+            Completed
+          </button>
+        </div>
         <div className="mt-5">
           {orderHistory.map((order) => (
-            <div key={order.id} className="border-b py-4">
-              <h2 className="text-lg font-semibold">Order ID: {order.id}</h2>
-              <p>Date: {order.date}</p>
-              <div className="mt-2">
-                <h3 className="text-lg font-semibold">Products:</h3>
-                <ul>
-                  {order.products.map((product) => (
-                    <li key={product.id}>
-                      {product.name} - ${product.price} x {product.quantity}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <p className="mt-2">Total: ${order.total}</p>
-            </div>
+            <OrderCard key={order.id} order={order} />
           ))}
         </div>
       </div>
