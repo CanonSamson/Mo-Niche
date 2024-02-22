@@ -1,16 +1,21 @@
+"use client";
 import Link from "next/link";
 import { MdOutlineForwardToInbox } from "react-icons/md";
 import { GiClothes } from "react-icons/gi";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { RiAccountPinCircleLine } from "react-icons/ri";
 import Icon from "@/components/Icon";
+import withAuth from "../withAuth";
+import { useSelector } from "react-redux";
 
 const Account = () => {
+  const { pending, user } = useSelector((state) => state.app);
+
   return (
     <main className=" text-[16px] pb-[100px] font-light pt-[80px] font-sans">
       <div className="">
         <span className="  capitalize flex px-4 text-[18px] pb-2 font-medium">
-          Hello, Canon Samson
+          Hello, {user.fullName}
         </span>
         <ul className=" grid gap-2">
           <li className="">
@@ -72,4 +77,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default withAuth(Account);

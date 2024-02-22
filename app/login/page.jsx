@@ -3,14 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import Input from "@/components/Input";
-import { loginWithEmailandPassword } from "./functions";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const router= useRouter()
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [logining, setLogining] = useState(false);
@@ -33,9 +35,25 @@ const Login = () => {
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
       try {
-        await loginWithEmailandPassword(formData);
+        const response = await fetch("/api/login", {
+          method: "POST",
+          body: JSON.stringify(formData),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (response.ok) {
+          const responseData = await response.json();
+          localStorage.setItem("token", responseData.token);
+          router.push("/account")
+          console.log("Signup successful!", responseData);
+        } else {
+          console.error(`Signup failed: ${response.statusText}`);
+        }
       } catch (error) {
-        console.log(error);
+        console.error("Error during signup:", error);
+        throw error; // Re-throw the error to propagate it to the calling code
       } finally {
         setLogining(false);
       }
@@ -95,7 +113,7 @@ const Login = () => {
             Login
           </button>{" "}
           <span className="text-[12px] mt-2 flex gap-2">
-            <span> Don't have an account? </span>{" "}
+            <span> {`Don't have an account? `}</span>{" "}
             <Link
               href="/signup"
               className="text-primary hover:underline duration-200"

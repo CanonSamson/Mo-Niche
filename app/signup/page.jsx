@@ -2,8 +2,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import Input from "@/components/Input";
-import { signupWithEmailandPassword } from "./functions";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +13,7 @@ const Signup = () => {
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -49,9 +50,12 @@ const Signup = () => {
       });
 
       if (response.ok) {
+        const responseData = await response.json();
+        localStorage.setItem("token", responseData.token);
         console.log("Signup successful!");
+        router.push("/account");
       } else {
-        throw new Error(`Signup failed: ${response.statusText}`);
+        console.error(`Signup failed: ${response.statusText}`);
       }
     } catch (error) {
       console.error("Error during signup:", error);

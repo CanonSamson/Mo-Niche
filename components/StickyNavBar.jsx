@@ -15,7 +15,10 @@ const StickyNavBar = () => {
   const [viewCurrencies, setViewCurrencies] = useState(false);
   const [viewSideBar, setViewSideBar] = useState(false);
   const pathname = usePathname();
-  const { currenties, currency } = useSelector((state) => state.app);
+
+  const { currenties, currency, pending, user } = useSelector(
+    (state) => state.app
+  );
   const { items: cart } = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
@@ -117,7 +120,7 @@ const StickyNavBar = () => {
             </button>
           </li>
           <li className=" relative">
-            <Link href="/login">
+            <Link href={user ? "/account" : "/login"}>
               <Icon name="person" size={24} />
             </Link>
           </li>
