@@ -78,17 +78,6 @@ const Login = () => {
 
   return (
     <div className="pt-[100px] pb-[150px] w-full z-4 relative px-4">
-      {logining && (
-        <div className=" items-center justify-center w-full fixed h-screen bg-white/20  top-0 right-0 z-[55] flex">
-          <Image
-            className="animate-pulse"
-            src="/loading-logo.png"
-            alt="logo"
-            width={100}
-            height={100}
-          />
-        </div>
-      )}
       <div className="bg-white h-[300px] min-w-[300px] w-full flex flex-col">
         <h1 className="text-center text-2xl">Login</h1>
         <form
@@ -124,7 +113,7 @@ const Login = () => {
             disabled={logining}
             className="mt-5 bg-gray-900 w-full text-white py-2"
           >
-            Login
+            {logining ? "Loading..." : "Login"}
           </button>{" "}
           <span className="text-[12px] mt-2 flex gap-2">
             <span> {`Don't have an account? `}</span>{" "}

@@ -1,6 +1,6 @@
 "use client";
 
-import { Provider, useDispatch } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import { store } from "./store";
 
 import { useEffect } from "react";
@@ -17,13 +17,13 @@ export default RootProvider;
 
 const Data = ({ children }) => {
   const dispatch = useDispatch();
-
+  const { pending, user } = useSelector((state) => state.app);
   const getUser = async () => {
     const { setPending, setUser } = await import("./appSlice");
     dispatch(setPending(true));
 
     const token = localStorage.getItem("token");
-    if (!token) return;
+    if (!token || user) return;
     try {
       const response = await fetch(`/api/user`, {
         headers: {
@@ -47,7 +47,7 @@ const Data = ({ children }) => {
       await getUser();
     };
     fetchData();
-  }, [dispatch]);
+  }, []);
 
   return <div>{children}</div>;
 };

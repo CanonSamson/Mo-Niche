@@ -26,7 +26,7 @@ const Signup = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-setBackendError(null)
+    setBackendError(null);
     // Simple validation
     const newErrors = {};
     if (!formData.email) {
@@ -72,18 +72,6 @@ setBackendError(null)
 
   return (
     <div className="pt-[100px] pb-[150px] w-full z-4 relative px-4">
-      {loading && (
-        <div className=" items-center justify-center w-full fixed h-screen bg-white/20  top-0 right-0 z-[55] flex">
-          <Image
-            className="animate-pulse"
-            src="/loading-logo.png"
-            alt="logo"
-            width={100}
-            height={100}
-          />
-        </div>
-      )}
-
       <div className="bg-white min-h-[300px] min-w-[300px] w-full flex flex-col">
         <h1 className="text-center text-2xl">Create Account</h1>
         <p className="text-center">
@@ -130,7 +118,7 @@ setBackendError(null)
             disabled={loading}
             className="mt-5 bg-gray-900 w-full text-white py-2"
           >
-            Create Account
+            {loading ? "Loading..." : "Create Account"}
           </button>
 
           <span>
