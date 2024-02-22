@@ -2,7 +2,7 @@
 
 import { Provider, useDispatch } from "react-redux";
 import { store } from "./store";
-import { setPending, setUser } from "./appSlice";
+
 import { useEffect } from "react";
 
 const RootProvider = ({ children }) => {
@@ -19,6 +19,7 @@ const Data = ({ children }) => {
   const dispatch = useDispatch();
 
   const getUser = async () => {
+    const { setPending, setUser } = await import("./appSlice");
     dispatch(setPending(true));
 
     const token = localStorage.getItem("token");

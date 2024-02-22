@@ -13,6 +13,8 @@ const Signup = () => {
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [backendError, setBackendError] = useState(null);
+
   const router = useRouter();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +26,7 @@ const Signup = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+setBackendError(null)
     // Simple validation
     const newErrors = {};
     if (!formData.email) {
@@ -56,6 +58,9 @@ const Signup = () => {
         router.push("/account");
       } else {
         console.error(`Signup failed: ${response.statusText}`);
+        const responseData = await response.json();
+
+        setBackendError(responseData.error);
       }
     } catch (error) {
       console.error("Error during signup:", error);
@@ -116,7 +121,11 @@ const Signup = () => {
             onChange={handleChange}
             error={errors?.password}
           />
-
+          {backendError && (
+            <div>
+              <span className=" text-red-500">{backendError}</span>
+            </div>
+          )}
           <button
             disabled={loading}
             className="mt-5 bg-gray-900 w-full text-white py-2"

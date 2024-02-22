@@ -46,7 +46,7 @@ const Account = () => {
           <li className="">
             <Link
               className=" flex items-center h-[55px]  border px-4  gap-4"
-              href=""
+              href="my-info"
             >
               <Icon name="person" size={24} />
 
@@ -70,6 +70,11 @@ const Account = () => {
               <RiAccountPinCircleLine size={24} />
               <span>Close Account</span>
             </Link>
+          </li>
+          <li className=" mt-5">
+            <button className=" w-full justify-center flex items-center h-[55px]  border px-4  gap-4">
+              <span>Log Out</span>
+            </button>
           </li>
         </ul>
       </div>

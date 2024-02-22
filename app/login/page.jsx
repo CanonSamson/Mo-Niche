@@ -12,10 +12,11 @@ const Login = () => {
     password: "",
   });
 
-  const router= useRouter()
+  const router = useRouter();
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [logining, setLogining] = useState(false);
+  const [backendError, setBackendError] = useState(null);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -31,6 +32,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLogining(true);
+    setBackendError(null);
+
     const newErrors = validate(formData);
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
@@ -46,14 +49,16 @@ const Login = () => {
         if (response.ok) {
           const responseData = await response.json();
           localStorage.setItem("token", responseData.token);
-          router.push("/account")
+          router.push("/account");
           console.log("Signup successful!", responseData);
         } else {
-          console.error(`Signup failed: ${response.statusText}`);
+          const responseData = await response.json();
+
+          setBackendError(responseData.error);
+          console.log(responseData);
         }
       } catch (error) {
         console.error("Error during signup:", error);
-        throw error; // Re-throw the error to propagate it to the calling code
       } finally {
         setLogining(false);
       }
@@ -86,7 +91,11 @@ const Login = () => {
       )}
       <div className="bg-white h-[300px] min-w-[300px] w-full flex flex-col">
         <h1 className="text-center text-2xl">Login</h1>
-        <form className="mt-10 gap-2 flex flex-col" onSubmit={handleSubmit}>
+        <form
+          className="mt-10 gap-2 flex flex-col"
+          onSubmit={handleSubmit}
+          method="post"
+        >
           <Input
             label="Email"
             name="email"
@@ -94,7 +103,7 @@ const Login = () => {
             placeholder="Email*"
             onChange={handleChange}
             value={formData.email}
-            error={touched.email && errors.email}
+            error={touched.email && errors?.email}
           />
           <Input
             label="Password"
@@ -103,8 +112,13 @@ const Login = () => {
             placeholder="Password"
             onChange={handleChange}
             value={formData.password}
-            error={touched.password && errors.password}
+            error={touched.password && errors?.password}
           />
+          {backendError && (
+            <div>
+              <span className=" text-red-500">{backendError}</span>
+            </div>
+          )}
           <span className="underline text-[12px]">Forgotten Password</span>
           <button
             disabled={logining}

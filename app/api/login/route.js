@@ -8,7 +8,7 @@ import { connect } from "@/db";
 export async function POST(req) {
   try {
     const { email, password } = await req.json();
-
+    const lowerCaseEmail = email.toLowerCase();
     // Validate the email and password
     if (!email || !password) {
       return NextResponse.json(
@@ -20,7 +20,14 @@ export async function POST(req) {
     await connect();
 
     // Check if the user exists in the database and validate the password
-    const user = await userSchema.findOne({ email });
+    const user = await userSchema.findOne({ email: lowerCaseEmail });
+
+    if (!user)
+      return NextResponse.json(
+        { error: "User is not registered" },
+        { status: 404 }
+      );
+
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return NextResponse.json(
         { error: "Invalid email or password" },
