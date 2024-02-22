@@ -1,115 +1,122 @@
 "use client";
-
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import Link from "next/link";
+import { useState } from "react";
 import Input from "@/components/Input";
+import { signupWithEmailandPassword } from "./functions";
+import Image from "next/image";
 
 const Signup = () => {
-  const validationSchema = Yup.object().shape({
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    password: Yup.string().required("Password is required"),
-    address: Yup.string().required("Address is required"),
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    fullName: "",
   });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-  const onSubmit = async (values) => {
-    const { auth } = await import("@/firebase-config");
-    const { createUserWithEmailAndPassword, updateProfile } = await import(
-      "firebase/auth"
-    );
-    const { db } = await import("../../firebase-config");
-    const { doc, setDoc } = await import("firebase/firestore");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Simple validation
+    const newErrors = {};
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    }
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    setLoading(true);
 
     try {
-      const credential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-      if (credential && auth.currentUser) {
-        updateProfile(auth.currentUser, {
-          displayName: fullName,
-        });
-
-        await setDoc(doc(db, "users", auth.currentUser.uid), {
-          email,
-          fullName,
-          emailVerification,
-        });
+      if (response.ok) {
+        console.log("Signup successful!");
+      } else {
+        throw new Error(`Signup failed: ${response.statusText}`);
       }
     } catch (error) {
-      let err;
-      if (error.message === `Firebase: Error (auth/email-already-in-use).`) {
-        err = "Email address already in use";
-      }
-
-      if (error.message === `Firebase: Error (auth/invalid-email).`) {
-        err = "Enter a valid Email address";
-      }
-      if (
-        error.message ===
-        `Firebase: Password should be at least 6 characters (auth/weak-password).`
-      ) {
-        err = "Password should be at least 6 characters ";
-      }
-
-      if (err) return { Error: err, Success: false };
+      console.error("Error during signup:", error);
+      throw error; // Re-throw the error to propagate it to the calling code
+    } finally {
+      setLoading(false);
     }
   };
-  const { errors, touched, handleChange, handleBlur, values, handleSubmit } =
-    useFormik({
-      initialValues: {
-        email: "",
-        password: "",
-        address: "",
-      },
-      validationSchema,
-      onSubmit,
-    });
 
   return (
     <div className="pt-[100px] pb-[150px] w-full z-4 relative px-4">
+      {loading && (
+        <div className=" items-center justify-center w-full fixed h-screen bg-white/20  top-0 right-0 z-[55] flex">
+          <Image
+            className="animate-pulse"
+            src="/loading-logo.png"
+            alt="logo"
+            width={100}
+            height={100}
+          />
+        </div>
+      )}
+
       <div className="bg-white min-h-[300px] min-w-[300px] w-full flex flex-col">
         <h1 className="text-center text-2xl">Create Account</h1>
         <p className="text-center">
           Be the first to know about our special offers and new lookbooks.
         </p>
-        <form className="mt-10 gap-2 flex flex-col" onSubmit={handleSubmit}>
+        <form
+          className="mt-10 gap-2 flex flex-col"
+          onSubmit={handleSubmit}
+          method="post"
+        >
+          <Input
+            label="Full Name"
+            name="fullName"
+            type="fullName"
+            placeholder="Full Name*"
+            value={formData.fullName}
+            onChange={handleChange}
+            error={errors?.fullName}
+          />
           <Input
             label="Email"
             name="email"
             type="email"
             placeholder="Email*"
+            value={formData.email}
             onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
-            error={touched.email && errors?.email}
+            error={errors?.email}
           />
-
           <Input
             label="Password"
-            id="password"
+            name="password"
             type="password"
             placeholder="Password"
+            value={formData.password}
             onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.password}
-            error={touched.password && errors?.password}
+            error={errors?.password}
           />
 
-          <Input
-            label="Address"
-            name="address"
-            type="text"
-            placeholder="Address"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.address}
-            error={touched.address && errors?.address}
-          />
-
-          <button className="mt-5 bg-gray-900 w-full text-white py-2">
+          <button
+            disabled={loading}
+            className="mt-5 bg-gray-900 w-full text-white py-2"
+          >
             Create Account
           </button>
 

@@ -7,6 +7,7 @@ import Product from "@/components/Product";
 import Footer from "@/components/Footer";
 import { useSelector } from "react-redux";
 
+
 export default function Home() {
   const { recommended, bestsellers } = useSelector((state) => state.app);
 

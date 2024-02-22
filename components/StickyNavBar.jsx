@@ -1,7 +1,7 @@
 "use client";
 
 import Icon from "./Icon";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SideBar from "./SideBar";
@@ -95,10 +95,9 @@ const StickyNavBar = () => {
               } right-0 border hover:cursor-pointer border-gray-200 duration-500 text-black absolute top-7  shadow-lg text-[14px] z-50 bg-white `}
             >
               {currenties.map(({ code }, index) => (
-                <>
+                <Fragment key={index}>
                   {currency != code && (
                     <li
-                      key={index}
                       onClick={() => {
                         dispatch(setCurrency(code));
                         setViewCurrencies(false);
@@ -108,7 +107,7 @@ const StickyNavBar = () => {
                       {code}
                     </li>
                   )}
-                </>
+                </Fragment>
               ))}
             </ul>
           </li>

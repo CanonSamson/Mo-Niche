@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  user: null,
   currenties: [
     { code: "NGN" },
     { code: "USD" },
@@ -71,9 +72,12 @@ export const appSlice = createSlice({
     setCurrency: (state, action) => {
       state.currency = action.payload;
     },
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
   },
 });
 
-export const { setCurrency } = appSlice.actions;
+export const { setCurrency, setUser } = appSlice.actions;
 
 export default appSlice.reducer;
