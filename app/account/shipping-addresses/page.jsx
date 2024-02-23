@@ -100,14 +100,18 @@ const ShippingAddresses = () => {
           </form>
         </div>
         <div className="mt-5 grid gap-4">
-          {shippingAddresses.map((address, index) => (
-            <AddressCard
-              key={index}
-              name={address.name}
-              phoneNumber={address.phoneNumber}
-              address={address.address}
-            />
-          ))}
+          {shippingAddresses ? (
+            shippingAddresses?.map((address, index) => (
+              <AddressCard
+                key={index}
+                name={address.name}
+                phoneNumber={address.phoneNumber}
+                address={address.address}
+              />
+            ))
+          ) : (
+            <>No Address</>
+          )}
         </div>
       </div>
     </div>
