@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: null,
   pending: true,
+  shippingAddresses: null,
   currenties: [
     { code: "NGN" },
     { code: "USD" },
@@ -76,12 +77,16 @@ export const appSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
+    setAddress: (state, action) => {
+      state.shippingAddresses = action.payload;
+    },
     setPending: (state, action) => {
       state.pending = action.payload;
     },
   },
 });
 
-export const { setCurrency, setUser, setPending } = appSlice.actions;
+export const { setCurrency, setUser, setAddress, setPending } =
+  appSlice.actions;
 
 export default appSlice.reducer;

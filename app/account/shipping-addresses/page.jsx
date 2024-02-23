@@ -4,32 +4,20 @@ import { useState } from "react";
 import Input from "@/components/Input";
 import AddressCard from "./AddressCard";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserDetails } from "@/Redux/actions/getUser";
 
 const ShippingAddresses = () => {
-  // Assume shipping addresses data is fetched from an API or context
-  const [shippingAddresses, setShippingAddresses] = useState([
-    {
-      id: 1,
-      name: "John Doe",
-      phoneNumber: "1234567890",
-      address: "123 Main St, City, Country",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      phoneNumber: "9876543210",
-      address: "456 Elm St, Town, Country",
-    },
-  ]);
-
   // State variables for form fields and error
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
+  const { shippingAddresses } = useSelector((state) => state.app);
 
   // Handler for adding a new shipping address
-  const handleAddAddress = (event) => {
+  const handleAddAddress = async (event) => {
     event.preventDefault();
 
     // Simple validation to check if fields are empty
@@ -44,7 +32,22 @@ const ShippingAddresses = () => {
       phoneNumber,
       address,
     };
-    setShippingAddresses([newAddress, ...shippingAddresses]);
+    const token = localStorage.getItem("token");
+    try {
+      const response = fetch("/api/address", {
+        method: "POST",
+        headers: { Authorization: token },
+        body: { address: newAddress },
+      });
+
+      if (response.ok) {
+        await response.json();
+        await getUserDetails(dispatch);
+      } else {
+      }
+    } catch (error) {
+      console.log(error);
+    }
     // Optionally, send the new address to the backend for storage
     setName("");
     setPhoneNumber("");
@@ -88,7 +91,10 @@ const ShippingAddresses = () => {
               onChange={(e) => setAddress(e.target.value)}
             />
             {error && <p className="text-red-500">{error}</p>}
-            <button type="submit" className="bg-gray-900 mt-5 text-white py-2 px-4">
+            <button
+              type="submit"
+              className="bg-gray-900 mt-5 text-white py-2 px-4"
+            >
               Add Address
             </button>
           </form>

@@ -4,6 +4,7 @@ import { Provider, useDispatch, useSelector } from "react-redux";
 import { store } from "./store";
 
 import { useEffect } from "react";
+import { getUserDetails } from "./actions/getUser";
 
 const RootProvider = ({ children }) => {
   return (
@@ -18,33 +19,10 @@ export default RootProvider;
 const Data = ({ children }) => {
   const dispatch = useDispatch();
   const { pending, user } = useSelector((state) => state.app);
-  const getUser = async () => {
-    const { setPending, setUser } = await import("./appSlice");
-    dispatch(setPending(true));
-
-    const token = localStorage.getItem("token");
-    if (!token || user) return;
-    try {
-      const response = await fetch(`/api/user`, {
-        headers: {
-          Authorization: `${token}`, // Include JWT token in the request header
-        },
-      });
-
-      if (response.ok) {
-        const responseData = await response.json();
-        dispatch(setUser(responseData));
-        dispatch(setPending(false));
-      }
-    } catch (error) {
-      console.log(error);
-      dispatch(setPending(false));
-    }
-  };
 
   useEffect(() => {
     const fetchData = async () => {
-      await getUser();
+      await getUserDetails(dispatch);
     };
     fetchData();
   }, []);
