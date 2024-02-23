@@ -19,7 +19,7 @@ const withAuth = (WrappedComponent) => {
       return <LoadingPage />;
     }
 
-    return !pending && user && <WrappedComponent {...props} />;
+    return  user && <WrappedComponent {...props} />;
   };
 
   return Wrapper;

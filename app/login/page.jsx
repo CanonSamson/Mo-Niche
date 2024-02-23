@@ -5,6 +5,8 @@ import Link from "next/link";
 import Input from "@/components/Input";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { getUserDetails } from "@/Redux/actions/getUser";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +19,8 @@ const Login = () => {
   const [touched, setTouched] = useState({});
   const [logining, setLogining] = useState(false);
   const [backendError, setBackendError] = useState(null);
+  const dispatch = useDispatch();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -49,6 +53,9 @@ const Login = () => {
         if (response.ok) {
           const responseData = await response.json();
           localStorage.setItem("token", responseData.token);
+
+          await getUserDetails(dispatch);
+
           router.push("/account");
           console.log("Signup successful!", responseData);
         } else {
@@ -113,7 +120,7 @@ const Login = () => {
             disabled={logining}
             className="mt-5 bg-gray-900 w-full text-white py-2"
           >
-            {logining ? "Loading..." : "Login"}
+            {logining ? "loading..." : "Login"}
           </button>{" "}
           <span className="text-[12px] mt-2 flex gap-2">
             <span> {`Don't have an account? `}</span>{" "}

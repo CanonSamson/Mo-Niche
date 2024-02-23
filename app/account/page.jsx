@@ -6,11 +6,19 @@ import { LiaShippingFastSolid } from "react-icons/lia";
 import { RiAccountPinCircleLine } from "react-icons/ri";
 import Icon from "@/components/Icon";
 import withAuth from "../withAuth";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "@/Redux/appSlice";
+import { useRouter } from "next/navigation";
 
 const Account = () => {
-  const { pending, user } = useSelector((state) => state.app);
-
+  const { user } = useSelector((state) => state.app);
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const logout = async () => {
+    dispatch(setUser(null));
+    localStorage.removeItem("token");
+    router.push("/");
+  };
   return (
     <main className=" text-[16px] pb-[100px] font-light pt-[80px] font-sans">
       <div className="">
@@ -56,7 +64,7 @@ const Account = () => {
           <li className="">
             <Link
               className=" flex items-center h-[55px]  border px-4  gap-4"
-              href=""
+              href="/account/shipping-addresses"
             >
               <LiaShippingFastSolid size={24} />
               <span>Shipping Addresses</span>
@@ -72,7 +80,10 @@ const Account = () => {
             </Link>
           </li>
           <li className=" mt-5">
-            <button className=" w-full justify-center flex items-center h-[55px]  border px-4  gap-4">
+            <button
+              onClick={logout}
+              className=" w-full justify-center flex items-center h-[55px]  border px-4  gap-4"
+            >
               <span>Log Out</span>
             </button>
           </li>

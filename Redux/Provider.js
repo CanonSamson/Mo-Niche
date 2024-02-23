@@ -5,6 +5,7 @@ import { store } from "./store";
 
 import { useEffect } from "react";
 import { getUserDetails } from "./actions/getUser";
+import { setPending } from "./appSlice";
 
 const RootProvider = ({ children }) => {
   return (
@@ -22,10 +23,12 @@ const Data = ({ children }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (user != null) return;
+      console.log("called");
       await getUserDetails(dispatch);
     };
     fetchData();
   }, []);
 
-  return <div>{children}</div>;
+  return <>{children}</>;
 };

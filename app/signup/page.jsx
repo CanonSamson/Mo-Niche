@@ -2,8 +2,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import Input from "@/components/Input";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { getUserDetails } from "@/Redux/actions/getUser";
+import { useDispatch } from "react-redux";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +15,7 @@ const Signup = () => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [backendError, setBackendError] = useState(null);
-
+  const dispatch = useDispatch();
   const router = useRouter();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,6 +56,7 @@ const Signup = () => {
         const responseData = await response.json();
         localStorage.setItem("token", responseData.token);
         console.log("Signup successful!");
+        await getUserDetails(dispatch);
         router.push("/account");
       } else {
         console.error(`Signup failed: ${response.statusText}`);
@@ -86,7 +88,7 @@ const Signup = () => {
             label="Full Name"
             name="fullName"
             type="fullName"
-            placeholder="Full Name*"
+            placeholder="Full Name"
             value={formData.fullName}
             onChange={handleChange}
             error={errors?.fullName}
@@ -95,7 +97,7 @@ const Signup = () => {
             label="Email"
             name="email"
             type="email"
-            placeholder="Email*"
+            placeholder="Email"
             value={formData.email}
             onChange={handleChange}
             error={errors?.email}
@@ -118,7 +120,7 @@ const Signup = () => {
             disabled={loading}
             className="mt-5 bg-gray-900 w-full text-white py-2"
           >
-            {loading ? "Loading..." : "Create Account"}
+            {loading ? "loading..." : "Create Account"}
           </button>
 
           <span>

@@ -6,6 +6,7 @@ import AddressCard from "./AddressCard";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails } from "@/Redux/actions/getUser";
+import withAuth from "@/app/withAuth";
 
 const ShippingAddresses = () => {
   // State variables for form fields and error
@@ -14,7 +15,7 @@ const ShippingAddresses = () => {
   const [address, setAddress] = useState("");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
-  const { shippingAddresses } = useSelector((state) => state.app);
+  const { user } = useSelector((state) => state.app);
 
   // Handler for adding a new shipping address
   const handleAddAddress = async (event) => {
@@ -100,8 +101,8 @@ const ShippingAddresses = () => {
           </form>
         </div>
         <div className="mt-5 grid gap-4">
-          {shippingAddresses ? (
-            shippingAddresses?.map((address, index) => (
+          {user?.shippingAddresses ? (
+            user?.shippingAddresses?.map((address, index) => (
               <AddressCard
                 key={index}
                 name={address.name}
@@ -118,4 +119,4 @@ const ShippingAddresses = () => {
   );
 };
 
-export default ShippingAddresses;
+export default withAuth(ShippingAddresses);
