@@ -31,6 +31,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    phoneNumber: {
+      type: String,
+      required: true,
+    },
     addresses: [addressSchema],
   },
   { timestamps: true }

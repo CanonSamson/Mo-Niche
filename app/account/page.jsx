@@ -46,7 +46,7 @@ const Account = () => {
           <li className="">
             <Link
               className=" flex items-center h-[55px]  border px-4  gap-4"
-              href="my-info"
+              href="account/my-info"
             >
               <Icon name="person" size={24} />
 

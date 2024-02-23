@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Input from "@/components/Input";
+import Link from "next/link";
 
 const MyInfo = () => {
   const [values, setValues] = useState({
@@ -58,17 +59,21 @@ const MyInfo = () => {
   };
 
   return (
-    <div>
-      <h1>My Info</h1>
+    <div className=" pt-[60px] ">
+      <div className="bg-gray-100 py-5 flex justify-center mb-5">
+        <span className="uppercase">
+          <Link href="/account">ACCOUNT</Link> / <Link href=""> My Info</Link>
+        </span>
+      </div>
+      <h1 className=" text-2xl px-4  ">My Info</h1>
 
-      <div>
-        <span>Contact Details</span>
-        <form onSubmit={handleSubmit}>
+      <div className="mt-5 px-4">
+        <form className=" grid gap-4" onSubmit={handleSubmit}>
           <Input
             label="Your Name"
             name="name"
             type="text"
-            placeholder="Name*"
+            placeholder="Name"
             onChange={handleChange}
             value={values.name}
             error={errors?.name}
@@ -77,7 +82,7 @@ const MyInfo = () => {
             label="Email Address"
             name="email"
             type="email"
-            placeholder="Email*"
+            placeholder="Email"
             onChange={handleChange}
             value={values.email}
             error={errors?.email}
@@ -87,7 +92,7 @@ const MyInfo = () => {
             label="Phone Number"
             name="phoneNumber"
             type="tel"
-            placeholder="Phone Number*"
+            placeholder="Phone Number"
             onChange={handleChange}
             value={values.phoneNumber}
             error={errors?.phoneNumber}
@@ -97,14 +102,20 @@ const MyInfo = () => {
             label="Password"
             name="password"
             type="password"
-            placeholder="Password*"
+            placeholder="Password"
             onChange={handleChange}
             value={values.password}
+            disabled={true}
             error={errors?.password}
           />
 
           <div>
-            <button type="submit">Save</button>
+            <button
+              className="mt-5 bg-gray-900 w-full text-white py-2"
+              type="submit"
+            >
+              Save
+            </button>
           </div>
         </form>
       </div>

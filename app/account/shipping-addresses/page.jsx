@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Input from "@/components/Input";
 import AddressCard from "./AddressCard";
+import Link from "next/link";
 
 const ShippingAddresses = () => {
   // Assume shipping addresses data is fetched from an API or context
@@ -52,33 +53,42 @@ const ShippingAddresses = () => {
   };
 
   return (
-    <div className="pt-[100px] pb-[150px] w-full z-4 relative px-4">
-      <div className="bg-white min-h-[300px] min-w-[300px] w-full flex flex-col">
-        <h1 className="text-center text-2xl">Shipping Addresses</h1>
+    <div className="pt-[60px] pb-[150px] w-full z-4 relative">
+      <div className="bg-gray-100 py-5 flex justify-center mb-5">
+        <span className="uppercase">
+          <Link href="/account">ACCOUNT</Link> /{" "}
+          <Link href=""> Shipping Address</Link>
+        </span>
+      </div>
+      <div className="bg-white min-h-[300px] min-w-[300px]  px-4 w-full flex flex-col">
+        <h1 className="text-start text-2xl">Shipping Address</h1>
 
         <div className="mt-5">
           <h2 className="text-lg font-semibold mb-2">Add New Address</h2>
-          <form onSubmit={handleAddAddress} className="grid gap-2">
+          <form onSubmit={handleAddAddress} className="grid gap-4">
             <Input
+              label="Name"
               type="text"
               placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <Input
+              label="Phone Number"
               type="tel" // Update type to "tel" for phone number input
               placeholder="Phone Number"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
             <Input
+              label="Address"
               type="text"
               placeholder="Address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
             />
             {error && <p className="text-red-500">{error}</p>}
-            <button type="submit" className="bg-gray-900 text-white py-2 px-4">
+            <button type="submit" className="bg-gray-900 mt-5 text-white py-2 px-4">
               Add Address
             </button>
           </form>
