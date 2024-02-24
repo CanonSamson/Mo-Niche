@@ -5,7 +5,7 @@ import { store } from "./store";
 
 import { useEffect } from "react";
 import { getUserDetails } from "./actions/getUser";
-import { setPending } from "./appSlice";
+import { getRates } from "./actions/getRates";
 
 const RootProvider = ({ children }) => {
   return (
@@ -19,16 +19,26 @@ export default RootProvider;
 
 const Data = ({ children }) => {
   const dispatch = useDispatch();
-  const { pending, user } = useSelector((state) => state.app);
-
+  const { currenties, currency, pending, user } = useSelector(
+    (state) => state.app
+  );
   useEffect(() => {
     const fetchData = async () => {
+      getRates(dispatch, currency);
       if (user != null) return;
       console.log("called");
       await getUserDetails(dispatch);
     };
+
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      getRates(dispatch, currency);
+    };
+    fetchData();
+  }, [currency]);
 
   return <>{children}</>;
 };

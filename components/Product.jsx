@@ -12,9 +12,7 @@ const Product = ({ images, name, price, currency, category, uid }) => {
         alt="product"
       />
       <span className=" text-[14px]">{name}</span>
-      <span className=" text-">
-        {currency == "USD" && "$"} {price}
-      </span>
+      <span className=" text-">{price}</span>
       <div className="flex items-center gap-2">
         <span className=" flex h-[14px] w-[14px] bg-white border rounded-full  " />
         <span className=" flex h-[14px] w-[14px] bg-sky-600 rounded-full  " />

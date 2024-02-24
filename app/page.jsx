@@ -6,11 +6,22 @@ import Link from "next/link";
 import Product from "@/components/Product";
 import Footer from "@/components/Footer";
 import { useSelector } from "react-redux";
-
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const { recommended, bestsellers } = useSelector((state) => state.app);
+  const [recommended, setRecommended] = useState(null);
+  const [bestsellers, setBestsellers] = useState(null);
+  const { products } = useSelector((state) => state.app);
 
+  useEffect(() => {
+    const getRecommended = () => {
+      const recommended = products.filter((item) => item.tag === "recommended");
+      const bestsellers = products.filter((item) => item.tag === "bestsellers");
+      setRecommended(recommended);
+      setBestsellers(bestsellers);
+    };
+    getRecommended();
+  }, [products]);
   return (
     <>
       <main className=" pb-[100px] font-light font-sans">
@@ -33,7 +44,7 @@ export default function Home() {
           </div>
 
           <div className="  grid grid-cols-2 gap-4 mt-10">
-            {recommended.map((product, index) => (
+            {recommended?.map((product, index) => (
               <Product key={index} {...product} />
             ))}
           </div>
@@ -48,7 +59,7 @@ export default function Home() {
           </div>
 
           <div className="  grid grid-cols-2 gap-4 mt-4">
-            {bestsellers.map((product, index) => (
+            {bestsellers?.map((product, index) => (
               <Product key={index} {...product} />
             ))}
           </div>

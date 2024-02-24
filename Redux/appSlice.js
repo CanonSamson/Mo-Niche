@@ -1,70 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { products } from "./data";
 
 const initialState = {
   user: null,
   pending: true,
   shippingAddresses: null,
-  currenties: [
-    { code: "NGN" },
-    { code: "USD" },
-    { code: "GBP" },
-    { code: "EUR" },
-  ],
+  currenties: [{ code: "NGN" }, { code: "USD" }, { code: "EUR" }],
+  rates: null,
   currency: "USD",
-  recommended: [
-    {
-      images: ["/images/image-8.jpg"],
-      name: "Cape Sleeve Dress custom made",
-      price: "90.00",
-      currency: "USD",
-      category: "",
-      uid: "1233",
-      description:
-        " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    },
-    {
-      images: ["/IMG_5383.jpg"],
-      name: " ad minima veniam, quis nostrum exercitationem",
-      price: "100.00",
-      currency: "USD",
-      category: "",
-      uid: "123",
-      description:
-        " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    },
-  ],
-  bestsellers: [
-    {
-      images: ["/IMG_5388.jpg"],
-      name: "ad minima veniam, quis nostrum exercitationem",
-      price: "90.00",
-      currency: "USD",
-      category: "",
-      uid: "1d3",
-      description:
-        " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    },
-    {
-      images: ["/IMG_5385.jpg"],
-      name: " ad minima veniam, quis nostrum exercitationem",
-      price: "100.00",
-      currency: "USD",
-      category: "",
-      uid: "12d03",
-      description:
-        " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    },
-    {
-      images: ["/IMG_5374.jpg"],
-      name: " ad minima veniam, quis nostrum exercitationem",
-      price: "60.00",
-      currency: "USD",
-      category: "",
-      uid: "120w3",
-      description:
-        " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    },
-  ],
+  recommended: [],
+  bestsellers: [],
+  products: products,
 };
 
 export const appSlice = createSlice({
@@ -83,10 +29,22 @@ export const appSlice = createSlice({
     setPending: (state, action) => {
       state.pending = action.payload;
     },
+    setRates: (state, action) => {
+      state.rates = action.payload;
+    },
+    updateProducts: (state, action) => {
+      state.products = action.payload;
+    },
   },
 });
 
-export const { setCurrency, setUser, setAddress, setPending } =
-  appSlice.actions;
+export const {
+  updateProducts,
+  setRates,
+  setCurrency,
+  setUser,
+  setAddress,
+  setPending,
+} = appSlice.actions;
 
 export default appSlice.reducer;

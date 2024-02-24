@@ -95,7 +95,7 @@ export default function Carousel({ autoSlideInterval = 5000 }) {
               src={image}
               width={800}
               height={800}
-              alt=""
+              alt="images_"
             />
           ))}
         </div>
@@ -113,7 +113,7 @@ export default function Carousel({ autoSlideInterval = 5000 }) {
         <div className="flex items-center justify-center gap-2">
           {carouselData.map((_, i) => (
             <div
-              key={i % 2}
+              key={i}
               className={`
               transition-all w-3 h-3 bg-white rounded-full
               ${curr === i ? "p-2" : "bg-opacity-0 border border-white"}
