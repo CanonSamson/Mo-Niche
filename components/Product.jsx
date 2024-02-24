@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Product = ({ images, name, price, currency, category, uid }) => {
+const Product = ({ images, name, price, uid }) => {
   return (
     <Link href={`/products/${uid}`} className="  flex flex-col ">
       <Image
