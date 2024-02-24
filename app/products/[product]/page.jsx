@@ -47,7 +47,7 @@ const Page = () => {
   useEffect(() => {
     const product = products.find((product) => product.uid == details.product);
     setProduct(product);
-  }, [details.product, details.category]);
+  }, [details.product, details.category, products]);
 
   // Check if the product is already in the cart
   const isProductInCart =
@@ -71,9 +71,7 @@ const Page = () => {
         />
         <div className="px-2 mt-5">
           <h1 className="text-2xl">{product?.name}</h1>
-          <div className="text-2xl py-2 mb-4">
-            {product?.currency == "USD" && "$"} {product?.price}
-          </div>
+          <div className="text-2xl py-2 mb-4">{product?.price}</div>
           <p>{product?.description}</p>
         </div>
         <div className="flex items-center gap-2 mt-10 px-2">
