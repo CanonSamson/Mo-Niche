@@ -28,7 +28,6 @@ const ShippingAddresses = () => {
     }
 
     const newAddress = {
-      id: Date.now(), // Generate a unique ID
       name,
       phoneNumber,
       address,
@@ -37,23 +36,28 @@ const ShippingAddresses = () => {
     try {
       const response = fetch("/api/address", {
         method: "POST",
-        headers: { Authorization: token },
-        body: { address: newAddress },
+        body: JSON.stringify({ address: newAddress }),
+
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
       });
 
       if (response.ok) {
         await response.json();
         await getUserDetails(dispatch);
+
+        setName("");
+        setPhoneNumber("");
+        setAddress("");
+        setError("");
       } else {
       }
     } catch (error) {
       console.log(error);
     }
     // Optionally, send the new address to the backend for storage
-    setName("");
-    setPhoneNumber("");
-    setAddress("");
-    setError("");
   };
 
   return (
