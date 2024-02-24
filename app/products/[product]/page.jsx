@@ -15,8 +15,7 @@ const Page = () => {
   const details = useParams();
   const [product, setProduct] = useState(null);
   const { products, cartItems } = useSelector((state) => ({
-    bestsellers: state.app.bestsellers,
-    recommended: state.app.recommended,
+    products: state.app.products,
     cartItems: state.cart.items,
   }));
   const [quantity, setQuantity] = useState(1);
