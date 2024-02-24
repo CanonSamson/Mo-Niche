@@ -2,6 +2,7 @@ export const products = [
   {
     images: ["/images/image-8.jpg"],
     name: "Cape Sleeve Dress custom made",
+    basePrice: "90.00",
     price: "90.00",
     currency: "USD",
     category: "",
@@ -13,6 +14,7 @@ export const products = [
   {
     images: ["/IMG_5383.jpg"],
     name: " ad minima veniam, quis nostrum exercitationem",
+    basePrice: "100.00",
     price: "100.00",
     currency: "USD",
     tag: "recommended",
@@ -24,6 +26,7 @@ export const products = [
   {
     images: ["/IMG_5388.jpg"],
     name: "ad minima veniam, quis nostrum exercitationem",
+    basePrice: "90.00",
     price: "90.00",
     currency: "USD",
     category: "",
@@ -34,6 +37,7 @@ export const products = [
   {
     images: ["/IMG_5385.jpg"],
     name: " ad minima veniam, quis nostrum exercitationem",
+    basePrice: "100.00",
     price: "100.00",
     currency: "USD",
     category: "",
@@ -44,6 +48,7 @@ export const products = [
   {
     images: ["/IMG_5374.jpg"],
     name: " ad minima veniam, quis nostrum exercitationem",
+    basePrice: "60.00",
     price: "60.00",
     currency: "USD",
     category: "",
@@ -54,6 +59,7 @@ export const products = [
   {
     images: ["/IMG_5388.jpg"],
     name: "ad minima veniam, quis nostrum exercitationem",
+    basePrice: "90.00",
     price: "90.00",
     currency: "USD",
     category: "",
@@ -65,6 +71,7 @@ export const products = [
   {
     images: ["/IMG_5385.jpg"],
     name: " ad minima veniam, quis nostrum exercitationem",
+    basePrice: "100.00",
     price: "100.00",
     currency: "USD",
     category: "",
@@ -76,6 +83,7 @@ export const products = [
   {
     images: ["/IMG_5374.jpg"],
     name: " ad minima veniam, quis nostrum exercitationem",
+    basePrice: "60.00",
     price: "60.00",
     currency: "USD",
     category: "",

@@ -1,4 +1,5 @@
 import { updateProducts } from "../appSlice";
+import { updateCart } from "../cartSlice";
 import { products } from "../data";
 
 const currencySymbols = {
@@ -16,7 +17,7 @@ function fetchExchangeRates() {
     });
 }
 
-export const getRates = async (dispatch, currency) => {
+export const getRates = async (dispatch, currency, items) => {
   // Example usage
   const selectedCurrency = currency; // Example selected currency
   fetchExchangeRates().then((exchangeRates) => {
@@ -25,8 +26,25 @@ export const getRates = async (dispatch, currency) => {
       exchangeRates,
       selectedCurrency
     );
+    if (items?.length > 0) {
+      const updatedProducts = items.map((cart) => {
+        const exchangeRate = exchangeRates[selectedCurrency];
+        const basePrice = parseFloat(cart.product.basePrice);
+        const convertedPrice = (basePrice * exchangeRate).toFixed(2);
+        const currencySymbol = currencySymbols[selectedCurrency];
+
+        return {
+          ...cart,
+          product: {
+            ...cart.product,
+            price: `${currencySymbol}${convertedPrice}`,
+            currency: selectedCurrency,
+          },
+        };
+      });
+      dispatch(updateCart(updatedProducts));
+    }
     dispatch(updateProducts(updatedProducts));
-    console.log(updatedProducts);
   });
 };
 

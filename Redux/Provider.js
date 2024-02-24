@@ -19,12 +19,12 @@ export default RootProvider;
 
 const Data = ({ children }) => {
   const dispatch = useDispatch();
-  const { currenties, currency, pending, user } = useSelector(
-    (state) => state.app
-  );
+  const { currency, user } = useSelector((state) => state.app);
+  const { items } = useSelector((state) => state.cart);
+
   useEffect(() => {
     const fetchData = async () => {
-      getRates(dispatch, currency);
+      getRates(dispatch, currency, items);
       if (user != null) return;
       console.log("called");
       await getUserDetails(dispatch);
@@ -35,7 +35,7 @@ const Data = ({ children }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      getRates(dispatch, currency);
+      getRates(dispatch, currency, items);
     };
     fetchData();
   }, [currency]);

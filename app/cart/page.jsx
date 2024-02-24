@@ -32,7 +32,11 @@ const Cart = () => {
   const handleRemoveItem = (id) => {
     dispatch(removeItem({ id }));
   };
-
+  const currencySymbols = {
+    USD: "$",
+    EUR: "€",
+    NGN: "₦", // Nigerian Naira
+  };
   const renderCartItems = () => {
     return items.map((item) => (
       <div
@@ -85,7 +89,7 @@ const Cart = () => {
         {/* Product price */}
         <div>
           <span className="block text-lg font-semibold">
-            ${item.product.price}
+           {item.product.price}
           </span>
         </div>
       </div>

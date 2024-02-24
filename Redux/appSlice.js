@@ -8,8 +8,7 @@ const initialState = {
   currenties: [{ code: "NGN" }, { code: "USD" }, { code: "EUR" }],
   rates: null,
   currency: "USD",
-  recommended: [],
-  bestsellers: [],
+
   products: products,
 };
 
