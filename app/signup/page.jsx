@@ -5,6 +5,7 @@ import Input from "@/components/Input";
 import { useRouter } from "next/navigation";
 import { getUserDetails } from "@/Redux/actions/getUser";
 import { useDispatch } from "react-redux";
+import { sendWelcomeEmail } from "../api/emails/welcome/function";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -58,6 +59,7 @@ const Signup = () => {
         console.log("Signup successful!");
         await getUserDetails(dispatch);
         router.push("/account");
+        sendWelcomeEmail({ email: formData.email });
       } else {
         console.error(`Signup failed: ${response.statusText}`);
         const responseData = await response.json();
