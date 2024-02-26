@@ -2,8 +2,11 @@
 import React, { useState } from "react";
 import Input from "@/components/Input";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import withAuth from "@/app/withAuth";
 
 const MyInfo = () => {
+  const { user } = useSelector((state) => state.app);
   const [values, setValues] = useState({
     name: "",
     email: "",
@@ -70,22 +73,33 @@ const MyInfo = () => {
       <div className="mt-5 px-4">
         <form className=" grid gap-4" onSubmit={handleSubmit}>
           <Input
-            label="Your Name"
-            name="name"
-            type="text"
-            placeholder="Name"
-            onChange={handleChange}
-            value={values.name}
-            error={errors?.name}
-          />
-          <Input
             label="Email Address"
             name="email"
             type="email"
             placeholder="Email"
             onChange={handleChange}
-            value={values.email}
+            value={user.email}
             error={errors?.email}
+            disabled
+          />
+          <Input
+            label="Password"
+            name="password"
+            type="password"
+            placeholder="Password"
+            onChange={handleChange}
+            value={"values.password"}
+            disabled={true}
+            error={errors?.password}
+          />
+          <Input
+            label="Full Name"
+            name="name"
+            type="text"
+            placeholder="Name"
+            onChange={handleChange}
+            value={user.fullName}
+            error={errors?.name}
           />
 
           <Input
@@ -96,17 +110,6 @@ const MyInfo = () => {
             onChange={handleChange}
             value={values.phoneNumber}
             error={errors?.phoneNumber}
-          />
-
-          <Input
-            label="Password"
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={handleChange}
-            value={values.password}
-            disabled={true}
-            error={errors?.password}
           />
 
           <div>
@@ -123,4 +126,4 @@ const MyInfo = () => {
   );
 };
 
-export default MyInfo;
+export default withAuth(MyInfo);

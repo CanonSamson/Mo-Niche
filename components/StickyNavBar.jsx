@@ -25,7 +25,7 @@ const StickyNavBar = () => {
   const [search, setSearch] = useState(false);
 
   useEffect(() => {
-    if (pathname !== "/" || pathname !== "/contactus") {
+    if (pathname !== ("/" || "/contactus")) {
       setScroll(true);
     }
     const handleScroll = () => {
@@ -36,7 +36,7 @@ const StickyNavBar = () => {
       }
     };
 
-    if (pathname === "/" || pathname === "/contactus") {
+    if (pathname === ("/" || "/contactus")) {
       window.addEventListener("scroll", handleScroll);
 
       return () => {

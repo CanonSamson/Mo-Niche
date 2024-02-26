@@ -30,19 +30,21 @@ export default function Home() {
         <section className=" text-[14px] font-light px-4 mt-10">
           <div>
             <div className=" pb-10">
-              <span>BESTSELLERS</span>
-              <h2 className=" mt-4 text-[20px]">Shop our Favourites</h2>
+              <h2 className=" mt-4 text-[20px]">Dear Mo Niche Lady,</h2>
             </div>
             <p>
-              Mo Niche Collection, a brand that sells women&apos;s clothes,
-              combines creativity and helping society. It cares about more than
-              just making money; it wants to help the country grow too. Mo Niche
-              Collection, works hard to improve communities and make Nigeria
-              better. passion and creativity make big things happen in the
-              fashion world.
+              We understand the importance of wearing high-end fashion that
+              reflects your unique style and personality. That’s why we are
+              committed to providing you with top-notch garments and designs,
+              tailored to your specific proportions. We believe that every
+              individual deserves to experience the luxury of perfectly fitting
+              clothing without compromising their budget.
             </p>
           </div>
-
+          <div className="pt-5 pb-10">
+            <span>BESTSELLERS</span>
+            <h2 className=" mt-4 text-[20px]">Shop our Favourites</h2>
+          </div>
           <div className="  grid grid-cols-2 gap-4 mt-10">
             {recommended?.map((product, index) => (
               <Product key={index} {...product} />
