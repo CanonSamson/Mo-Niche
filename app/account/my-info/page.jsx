@@ -1,19 +1,22 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "@/components/Input";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import withAuth from "@/app/withAuth";
+import { getUserDetails } from "@/Redux/actions/getUser";
 
 const MyInfo = () => {
   const { user } = useSelector((state) => state.app);
   const [values, setValues] = useState({
-    name: "",
-    email: "",
+    fullName: "",
     phoneNumber: "",
-    password: "",
   });
+  const [updating, setUpdating] = useState(false);
   const [errors, setErrors] = useState({});
+  const [updadted, setUpdated] = useState(false);
+  const [backenderrors, setBackendErrors] = useState(null);
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,14 +26,37 @@ const MyInfo = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validateForm(values);
     if (Object.keys(errors).length === 0) {
-      // No errors, submit the form
-      console.log("Form submitted:", values);
+      const token = localStorage.getItem("token");
+      try {
+        if (!token || !user) return;
+        setUpdating(true);
+        const response = await fetch(`/api/user/update-info`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${token}`,
+          },
+          body: JSON.stringify(values),
+        });
+        if (response.ok) {
+          await getUserDetails(dispatch);
+          setUpdated(true);
+        } else {
+          const responseData = await response.json();
+          setBackendErrors(responseData.error);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setUpdating(false);
+      }
     } else {
       setErrors(errors);
+      console.log(errors);
     }
   };
 
@@ -38,31 +64,29 @@ const MyInfo = () => {
     let errors = {};
 
     // Example validation rules
-    if (!formData.name.trim()) {
-      errors.name = "Name is required";
+    if (!formData.fullName.trim()) {
+      errors.fullName = "Full Name is required";
     }
-    if (!formData.email.trim()) {
-      errors.email = "Email is required";
-    } else if (!isValidEmail(formData.email)) {
-      errors.email = "Invalid email format";
-    }
+
     if (!formData.phoneNumber.trim()) {
       errors.phoneNumber = "Phone number is required";
-    }
-    if (!formData.password.trim()) {
-      errors.password = "Password is required";
     }
 
     return errors;
   };
 
-  const isValidEmail = (email) => {
-    // Simple email validation regex
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
+  useEffect(() => {
+    setValues({
+      fullName: user.fullName ?? "",
+      phoneNumber: user.phoneNumber ?? "",
+    });
+    if (user) {
+      console.log(user);
+    }
+  }, [user]);
 
   return (
-    <div className=" pt-[60px] ">
+    <div className=" pt-[60px]  pb-[200px]">
       <div className="bg-gray-100 py-5 flex justify-center mb-5">
         <span className="uppercase">
           <Link href="/account">ACCOUNT</Link> / <Link href=""> My Info</Link>
@@ -82,23 +106,14 @@ const MyInfo = () => {
             error={errors?.email}
             disabled
           />
-          <Input
-            label="Password"
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={handleChange}
-            value={"values.password"}
-            disabled={true}
-            error={errors?.password}
-          />
+
           <Input
             label="Full Name"
             name="name"
             type="text"
             placeholder="Name"
             onChange={handleChange}
-            value={user.fullName}
+            value={values.fullName}
             error={errors?.name}
           />
 
@@ -114,10 +129,11 @@ const MyInfo = () => {
 
           <div>
             <button
+              disabled={updating}
               className="mt-5 bg-gray-900 w-full text-white py-2"
               type="submit"
             >
-              Save
+              {updating ? "loading" : "Save"}
             </button>
           </div>
         </form>
