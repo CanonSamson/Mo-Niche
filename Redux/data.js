@@ -1,7 +1,7 @@
 export const products = [
   {
-    images: ["/images/image-8.jpg"],
-    name: "Cape Sleeve Dress custom made",
+    images: ["/products/IMG_5150.jpg"],
+    name: "Marilyn Cape Sleeve Dress",
     basePrice: "90.00",
     price: "90.00",
     currency: "USD",
@@ -12,17 +12,18 @@ export const products = [
       " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
   },
   {
-    images: ["/IMG_5383.jpg"],
-    name: " ad minima veniam, quis nostrum exercitationem",
-    basePrice: "100.00",
-    price: "100.00",
+    images: ["/images/image-8.jpg"],
+    name: "Cape Sleeve Dress",
+    basePrice: "90.00",
+    price: "90.00",
     currency: "USD",
-    tag: "recommended",
     category: "",
-    uid: "123",
+    uid: "12233",
+    tag: "recommended",
     description:
       " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
   },
+
   {
     images: ["/IMG_5388.jpg"],
     name: "ad minima veniam, quis nostrum exercitationem",
@@ -65,6 +66,18 @@ export const products = [
     category: "",
     tag: "bestsellers",
     uid: "1d3",
+    description:
+      " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+  },
+  {
+    images: ["/IMG_5383.jpg"],
+    name: "ad minima veniam, quis nostrum exercitationem",
+    basePrice: "90.00",
+    price: "90.00",
+    currency: "USD",
+    category: "",
+    tag: "bestsellers",
+    uid: "12d3",
     description:
       " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
   },

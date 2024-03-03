@@ -19,6 +19,7 @@ function fetchExchangeRates() {
 
 export const getRates = async (dispatch, currency, items) => {
   // Example usage
+  if (!currency) return;
   const selectedCurrency = currency; // Example selected currency
   fetchExchangeRates().then((exchangeRates) => {
     const updatedProducts = convertPrices(
