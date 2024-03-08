@@ -2,13 +2,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import Icon from "@/components/Icon";
 import Link from "next/link";
-import { removeItem, updateQuantity } from "@/Redux/cartSlice";
+import { removeItem, updateQuantity, updateSubtotal } from "@/Redux/cartSlice";
 import Image from "next/image";
 import { AiOutlineMinus } from "react-icons/ai";
+import { useEffect } from "react";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const { items } = useSelector((state) => state.cart);
+  const { items, subtotal } = useSelector((state) => state.cart);
 
   // Function to handle increasing quantity
   const increaseQuantity = (id) => {
@@ -18,7 +19,6 @@ const Cart = () => {
       dispatch(updateQuantity({ id, quantity: newQuantity }));
     }
   };
-
   // Function to handle decreasing quantity
   const decreaseQuantity = (id) => {
     const item = items.find((item) => item.id === id);
@@ -89,18 +89,11 @@ const Cart = () => {
         {/* Product price */}
         <div>
           <span className="block text-lg font-semibold">
-           {item.product.price}
+            {item.product.price}
           </span>
         </div>
       </div>
     ));
-  };
-
-  const calculateSubtotal = () => {
-    return items.reduce(
-      (total, item) => total + item.product.price * item.quantity,
-      0
-    );
   };
 
   return (
@@ -121,9 +114,7 @@ const Cart = () => {
           <div className="border-t z-[20] right-0 text-[16px] w-full fixed p-5 bg-white bottom-0">
             <div className="flex items-center justify-between pb-10">
               <span>Subtotal:</span>{" "}
-              <span className="text-xl font-semibold">
-                ${calculateSubtotal()}
-              </span>
+              <span className="text-xl font-semibold">{subtotal.total}</span>
             </div>
             <div className="pb-4">
               <span>Taxes and shipping calculated at</span>

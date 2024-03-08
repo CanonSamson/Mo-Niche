@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   items: [],
+  subtotal: { base: 0, total: 0 },
 };
 
 export const cartSlice = createSlice({
@@ -21,7 +22,9 @@ export const cartSlice = createSlice({
       }
     },
     removeItem: (state, action) => {
-      // Implement removeItem logic if needed
+      const { id } = action.payload;
+      const newCart = state.items.filter((item) => item.id != id);
+      state.items = [...newCart];
     },
     clearCart: (state) => {
       state.items = [];
@@ -37,10 +40,19 @@ export const cartSlice = createSlice({
     updateCart: (state, action) => {
       state.items = action.payload;
     },
+    updateSubtotal: (state, action) => {
+      state.subtotal = action.payload;
+    },
   },
 });
 
-export const { addItem,updateCart, removeItem, clearCart, updateQuantity } =
-  cartSlice.actions;
+export const {
+  addItem,
+  updateCart,
+  removeItem,
+  clearCart,
+  updateQuantity,
+  updateSubtotal,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
