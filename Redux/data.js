@@ -25,17 +25,6 @@ export const products = [
   },
 
   {
-    images: ["/IMG_5388.jpg"],
-    name: "ad minima veni fffam, quis nostrum exercitationem",
-    basePrice: "90.00",
-    price: "90.00",
-    currency: "USD",
-    category: "",
-    uid: "1d3",
-    description:
-      " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-  },
-  {
     images: ["/IMG_5385.jpg"],
     name: " ad minima veniam, quis nostrum exercitationem",
     basePrice: "100.00",
