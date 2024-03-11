@@ -49,7 +49,7 @@ export const products = [
   {
     images: ["/IMG_5388.jpg"],
     name: "Gold Mettalic 2 piece outfit",
-    basePrice: "90.00",
+    basePrice: "29.00",
     price: "29.00",
     currency: "USD",
     category: "",
