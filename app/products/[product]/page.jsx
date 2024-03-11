@@ -71,7 +71,9 @@ const Page = () => {
         />
         <div className="px-2 mt-5">
           <h1 className="text-2xl">{product?.name}</h1>
-          <div className="text-2xl py-2 mb-4">{product?.price}</div>
+          <div className="text-2xl py-2 mb-4 italic font-serif">
+            {product?.price}
+          </div>
           <p>{product?.description}</p>
         </div>
         <div className="flex items-center gap-2 mt-10 px-2">

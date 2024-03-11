@@ -32,7 +32,7 @@ export default function Home() {
             <div className=" pb-10">
               <h2 className=" mt-4 text-[20px]">Dear Mo Niche Lady,</h2>
             </div>
-            <p>
+            <p className=" italic font-serif">
               We understand the importance of wearing high-end fashion that
               reflects your unique style and personality. That’s why we are
               committed to providing you with top-notch garments and designs,
