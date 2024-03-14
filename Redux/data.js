@@ -60,15 +60,15 @@ export const products = [
   },
   {
     images: ["/IMG_5383.jpg"],
-    name: "ad minima veniam, quis nostrum exercitationem",
-    basePrice: "90.00",
-    price: "90.00",
+    name: "Lace Elegance Ensemble",
+    basePrice: "29.00",
+    price: "29.00",
     currency: "USD",
     category: "",
     tag: "bestsellers",
     uid: "12d3",
     description:
-      " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+      "  a charming set that's all about grace and style. Made with delicate lace, this ensemble is both classy and affordable. Perfect for any occasion, it adds a touch of sophistication to your look effortlessly.",
   },
   {
     images: ["/IMG_5385.jpg"],
@@ -84,14 +84,14 @@ export const products = [
   },
   {
     images: ["/IMG_5374.jpg"],
-    name: " ad minima veniam, quis nostrum exercitationem",
-    basePrice: "60.00",
-    price: "60.00",
+    name: "Crystal Sparkle Mini",
+    basePrice: "90.00",
+    price: "90.00",
     currency: "USD",
     category: "",
     tag: "bestsellers",
     uid: "120w3",
     description:
-      " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+      "a beautiful mix of elegance and style. Covered in sparkling crystals, this accessory shines bright and makes any outfit look fancy. It's an easy way to add a touch of glamour to your look, no matter where you're headed.",
   },
 ];
