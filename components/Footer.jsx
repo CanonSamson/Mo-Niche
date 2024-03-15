@@ -1,5 +1,5 @@
-import Icon from './Icon'
-import Input from './Input'
+import Icon from "./Icon";
+import Input from "./Input";
 
 const Footer = () => {
   return (
@@ -21,7 +21,15 @@ const Footer = () => {
 
       <ol className="grid gap-2 px-2">
         <li>Help</li>
-        <li>Contact</li>
+        <li>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSePZH9GKvdb0EZk5QMhNMjPZpOi1YuTmojqhhg4IjltrArqFA/viewform"
+          >
+            Contact Us
+          </a>
+        </li>
         <li>Register</li>
         <li>Shops</li>
         <li>Company</li>
@@ -57,7 +65,7 @@ const Footer = () => {
         </span>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

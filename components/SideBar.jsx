@@ -96,8 +96,8 @@ const SideBar = ({ viewSideBar, setViewSideBar }) => {
             </button>
           </li>
           <a
-              target="_blank"
-              rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
             href="https://www.google.com/maps/place/Mo+Niche+Collections/@9.0731886,7.4327706,17z/data=!3m1!4b1!4m6!3m5!1s0x104e756de862b02f:0x3d9e7eca67682fae!8m2!3d9.0731886!4d7.4353455!16s%2Fg%2F11sq1kp4ky?entry=ttu"
             className={` ${
               viewShopLocation ? " h-[130px]" : " h-0  min-h-0"
@@ -119,14 +119,16 @@ const SideBar = ({ viewSideBar, setViewSideBar }) => {
           </li>
 
           <li>
-            <Link
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSePZH9GKvdb0EZk5QMhNMjPZpOi1YuTmojqhhg4IjltrArqFA/viewform"
               onClick={() => setViewSideBar(false)}
-              href="/contactus"
               className=" flex items-center gap-2"
             >
               <Icon name="contact" size={24} />
               <span>Contact Us</span>
-            </Link>
+            </a>
           </li>
         </ul>
       </div>
