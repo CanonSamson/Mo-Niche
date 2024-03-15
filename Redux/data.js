@@ -13,7 +13,7 @@ export const products = [
   },
   {
     images: ["/images/image-8.jpg"],
-    name: "Cape Sleeve Dress",
+    name: "Glimmering Sequin Minux",
     basePrice: "90.00",
     price: "90.00",
     currency: "USD",
@@ -66,7 +66,7 @@ export const products = [
     currency: "USD",
     category: "",
     tag: "bestsellers",
-    uid: "12d3",
+    uid: "1233d3",
     description:
       "  a charming set that's all about grace and style. Made with delicate lace, this ensemble is both classy and affordable. Perfect for any occasion, it adds a touch of sophistication to your look effortlessly.",
   },
@@ -78,7 +78,7 @@ export const products = [
     currency: "USD",
     category: "",
     tag: "bestsellers",
-    uid: "12d03",
+    uid: "120d03",
     description:
       " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
   },
@@ -90,7 +90,7 @@ export const products = [
     currency: "USD",
     category: "",
     tag: "bestsellers",
-    uid: "120w3",
+    uid: "1200w3",
     description:
       "a beautiful mix of elegance and style. Covered in sparkling crystals, this accessory shines bright and makes any outfit look fancy. It's an easy way to add a touch of glamour to your look, no matter where you're headed.",
   },
