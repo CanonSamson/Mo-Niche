@@ -54,7 +54,7 @@ export const products = [
     currency: "USD",
     category: "",
     tag: "bestsellers",
-    uid: "1d3",
+    uid: "10d3",
     description:
       " This stunning ensemble is all about making a bold statement. With its shimmering gold fabric and chic design, it's the perfect choice for those who love to shine. The two-piece set offers versatility and style, allowing you to mix and match for various occasions. Whether you're heading to a party or a special event, this outfit is sure to turn heads and steal the spotlight. Embrace your inner diva and dazzle in this eye-catching ensemble that effortlessly combines sophistication with a touch of glamour.",
   },
@@ -72,13 +72,13 @@ export const products = [
   },
   {
     images: ["/IMG_5385.jpg"],
-    name: " ad minima veniam, quis nostrum exercitationem",
+    name: "Spider web mesh dress",
     basePrice: "100.00",
     price: "100.00",
     currency: "USD",
     category: "",
     tag: "bestsellers",
-    uid: "120d03",
+    uid: "120554425452d03",
     description:
       " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
   },
