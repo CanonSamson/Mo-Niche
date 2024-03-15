@@ -96,7 +96,9 @@ const SideBar = ({ viewSideBar, setViewSideBar }) => {
             </button>
           </li>
           <a
-            href="https://maps.app.goo.gl/rUNjdV1pm4makjC49?g_st=ic"
+              target="_blank"
+              rel="noopener noreferrer"
+            href="google.com/maps/place/Mo+Niche+Collections/@9.0731886,7.4327706,17z/data=!3m1!4b1!4m6!3m5!1s0x104e756de862b02f:0x3d9e7eca67682fae!8m2!3d9.0731886!4d7.4353455!16s%2Fg%2F11sq1kp4ky?entry=ttu"
             className={` ${
               viewShopLocation ? " h-[130px]" : " h-0  min-h-0"
             } overflow-y-hidden  duration-500 flex flex-col gap-[4px]  bg-gray-50 px-4  justify-center`}
