@@ -27,8 +27,8 @@ export const products = [
   {
     images: ["/IMG_5385.jpg"],
     name: "Spider web mesh dress",
-    basePrice: "100.00",
-    price: "100.00",
+    basePrice: "30.00",
+    price: "30.00",
     currency: "USD",
     category: "",
     uid: "12d03",
