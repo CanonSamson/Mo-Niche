@@ -26,7 +26,7 @@ export const products = [
 
   {
     images: ["/IMG_5385.jpg"],
-    name: " ad minima veniam, quis nostrum exercitationem",
+    name: "Spider web mesh dress",
     basePrice: "100.00",
     price: "100.00",
     currency: "USD",
