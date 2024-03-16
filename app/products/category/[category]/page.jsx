@@ -29,8 +29,8 @@ const Page = () => {
       <section className="mt-20  ">
         <div className="  items-center flex flex-col  justify-center ">
           <h3>
-            {heading?.map((item, index) => (
-              <span key={index}>{item} {" "}</span>
+            {category?.split("-")?.map((item, index) => (
+              <span key={index}>{item} </span>
             ))}
           </h3>
           <p className=" border-b border-black">All products</p>
