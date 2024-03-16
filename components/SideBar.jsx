@@ -9,7 +9,9 @@ const SideBar = ({ viewSideBar, setViewSideBar }) => {
     <div
       className={`${
         viewSideBar ? "right-0" : "right-[1000%]"
-      } duration-300 fixed z-40 text-[14px] bg-white w-full h-screen overflow-x-auto  top-[60px] `}
+      } duration-300 fixed z-40 ${
+        viewCollections && "pb-20 "
+      } overflow-y-auto text-[14px] bg-white w-full h-screen overflow-x-auto  top-[60px] `}
     >
       <div className="grid p-2">
         <Link
@@ -48,13 +50,18 @@ const SideBar = ({ viewSideBar, setViewSideBar }) => {
         </div>
         <ul
           className={`grid ${
-            viewCollections ? " h-[160px]" : "  h-0"
+            viewCollections ? " h-[300px]" : "  h-0"
           } relative  duration-700 overflow-hidden`}
         >
           <li className=" border-b p-2 ">Ready To Wear</li>
           <li className="  p-2 border-b ">After Party Dress</li>
           <li className="  p-2 border-b ">MoNiche Lady</li>
           <li className="  p-2 border-b ">2022 Collections</li>
+          <li className="  p-2 border-b ">Beachwear</li>
+          <li className="  p-2 border-b ">Business Attire</li>
+          <li className="  p-2 border-b ">Birthday Dress</li>
+          <li className="  p-2 border-b ">Formal Dress</li>
+          <li className="  p-2 border-b ">Wedding Dress</li>
         </ul>
         <ul className=" grid mt-10 gap-4">
           <li>

@@ -13,7 +13,7 @@ export const products = [
   },
   {
     images: ["/images/image-8.jpg"],
-    name: "Glimmering Sequin Minux",
+    name: "Glimmering Sequin Minx",
     basePrice: "90.00",
     price: "90.00",
     currency: "USD",
@@ -88,10 +88,22 @@ export const products = [
     basePrice: "90.00",
     price: "90.00",
     currency: "USD",
-    category: "",
+    category: "mo-niche-lady",
     tag: "bestsellers",
     uid: "1200w3",
     description:
       "a beautiful mix of elegance and style. Covered in sparkling crystals, this accessory shines bright and makes any outfit look fancy. It's an easy way to add a touch of glamour to your look, no matter where you're headed.",
+  },
+  {
+    images: ["/ROW_9454.jpg"],
+    name: "Crystal Sparkle Exaggerated Jacket",
+    basePrice: "110.00",
+    price: "110.00",
+    currency: "USD",
+    category: "mo-niche-lady",
+    tag: "",
+    uid: "1200wee3",
+    description:
+      "a beautiful mx of elegance and style. Covered in sparkling crystals, this accessory shines bright and makes any outfit look fancy. It's an easy way to add a touch of glamour to your look, no matter where you're headed.",
   },
 ];
