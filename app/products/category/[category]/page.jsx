@@ -17,7 +17,7 @@ const Page = () => {
       setCategoryProducts(categoryProducts);
     };
     getProducts();
-  }, [products]);
+  }, [products, category]);
 
   return (
     <main className=" px-2 mt-20">

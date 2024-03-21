@@ -85,8 +85,8 @@ export const products = [
   {
     images: ["/IMG_5374.jpg"],
     name: "Crystal Sparkle Mini",
-    basePrice: "90.00",
-    price: "90.00",
+    basePrice: "47.00",
+    price: "47.00",
     currency: "USD",
     category: "mo-niche-lady",
     tag: "bestsellers",
