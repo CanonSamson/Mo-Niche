@@ -5,7 +5,7 @@ import Link from "next/link";
 import { removeItem, updateQuantity, updateSubtotal } from "@/Redux/cartSlice";
 import Image from "next/image";
 import { AiOutlineMinus } from "react-icons/ai";
-import { useEffect } from "react";
+
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -120,9 +120,11 @@ const Cart = () => {
               <span>Taxes and shipping calculated at</span>
               <span>Add a note to your order</span>
             </div>
-            <button className="bg-gray-900 w-full text-white py-2">
-              Check Out
-            </button>
+            <Link href="/cart/checkout">
+              <button className="bg-gray-900 px-4 w-full text-white py-2">
+                Check Out
+              </button>
+            </Link>
           </div>
         </div>
       )}

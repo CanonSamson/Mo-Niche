@@ -7,7 +7,7 @@ const Input = ({ error, label, type, ...input }) => {
   return (
     <div className="grid relative text-base w-full ">
       {label ? (
-        <label className="font-bold" htmlFor={label}>
+        <label className=" font-medium" htmlFor={label}>
           {label}
         </label>
       ) : (

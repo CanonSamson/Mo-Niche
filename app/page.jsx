@@ -23,8 +23,8 @@ export default function Home() {
     getRecommended();
   }, [products]);
   return (
-    <>
-      <main className=" pb-[100px] font-light font-sans">
+    <div className=" ">
+      <main className="bg-gray-50  pb-[100px] font-light font-sans">
         <Carousel />
 
         <section className=" text-[14px] font-light mt-10">
@@ -45,7 +45,7 @@ export default function Home() {
             <span>BESTSELLERS</span>
             <h2 className=" mt-4 text-[20px] italic font-serif">Shop our Favourites</h2>
           </div>
-          <div className="  grid grid-cols-2 gap-1 mt-10">
+          <div className="  grid grid-cols-2   lg:grid-cols-5 gap-1 mt-10">
             {recommended?.map((product, index) => (
               <Product key={index} {...product} />
             ))}
@@ -60,7 +60,7 @@ export default function Home() {
             <p className=" border-b border-black">View all</p>
           </div>
 
-          <div className="  grid grid-cols-2 gap-1 mt-4">
+          <div className=" lg:grid-cols-5 grid grid-cols-2 gap-1 mt-4">
             {bestsellers?.map((product, index) => (
               <Product key={index} {...product} />
             ))}
@@ -90,6 +90,6 @@ export default function Home() {
         </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

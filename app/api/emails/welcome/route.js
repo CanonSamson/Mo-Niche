@@ -73,7 +73,7 @@ export async function POST(req) {
     const transporter = await useTransporter();
 
     const mailOptions = {
-      from: process.env.NEXT_PUBLIC_EMAIL,
+      from: "process.env.NEXT_PUBLIC_EMAIL",
       to: email,
       subject: `Dear Mo Niche Lady!`,
       html: html,

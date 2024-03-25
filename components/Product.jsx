@@ -8,7 +8,7 @@ const Product = ({ images, name, price, uid }) => {
         src={images[0]}
         width={500}
         height={500}
-        className=" h-[250px] w-full object-cover object-top "
+        className=" h-[250px] lg:h-[300px] w-full object-cover object-top "
         alt="product"
       />
       <div className=" p-1 grid">
