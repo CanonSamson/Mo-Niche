@@ -1,6 +1,6 @@
 export const products = [
   {
-    images: ["/products/IMG_5150.jpg"],
+    images: ["/products/IMG_5150.jpg", "/products/marilyn-cape-1.jpg", "/products/marilyn-cape-2.jpg"],
     name: "Marilyn Cape Sleeve Dress",
     basePrice: "90.00",
     price: "90.00",

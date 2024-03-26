@@ -55,8 +55,6 @@ const Page = () => {
   const isProductInCart =
     product && cartItems.some((item) => item.id === product.uid);
 
-  const le = 400 * product?.images?.length;
-  const f = le.toString + "px";
   return (
     <>
       <div className="pt-[60px] font-sans font-light pb-20">
@@ -64,7 +62,7 @@ const Page = () => {
           <button type="button" onClick={() => router.back()}>
             <FaAngleLeft size={24} />
           </button>
-          <span className=" font-semibold text-xl">Details</span>
+          <span className="  font-medium text-xl">Details</span>
           <span />
         </div>
         <div className=" w-full overflow-x-auto">
