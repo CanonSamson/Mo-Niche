@@ -69,8 +69,9 @@ const Page = () => {
         </div>
         <div className=" w-full overflow-x-auto">
           <div className={` h-[500px]  flex gap-2 mx-auto`}>
-            {product?.images.map((item) => (
+            {product?.images.map((item, index) => (
               <Image
+                key={index}
                 src={item}
                 width={300}
                 height={300}
