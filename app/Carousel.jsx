@@ -14,14 +14,24 @@ export default function Carousel({ autoSlideInterval = 5000 }) {
       heading: "  Become a Mo Niche Lady",
       subtitle: "  ...LADY CLOTHES STORE...",
 
-      buttons: [{ text: "Book a Consultation" }],
+      buttons: [
+        {
+          text: "Book a Consultation",
+          link: "https://docs.google.com/forms/d/e/1FAIpQLSdY63li9bCjM-WmilxZAOWqzL8EJC5aQpk7SUAx9An0BdSijQ/viewform?usp=sf_link",
+        },
+      ],
     },
     {
       image: "/images/image-6.jpg",
       heading: " Mo Niche Lady",
       subtitle: "  ...LADY CLOTHES STORE...",
 
-      buttons: [{ text: "Book a Consultation" }],
+      buttons: [
+        {
+          text: "Book a Consultation",
+          link: "https://docs.google.com/forms/d/e/1FAIpQLSdY63li9bCjM-WmilxZAOWqzL8EJC5aQpk7SUAx9An0BdSijQ/viewform?usp=sf_link",
+        },
+      ],
     },
     {
       image: "/images/image-1.jpg",
@@ -68,17 +78,18 @@ export default function Carousel({ autoSlideInterval = 5000 }) {
         </h1>
 
         <div className="flex gap-2 text-[12px]">
-          {carouselData[curr]?.buttons.map(({ text }, index) => (
-            <button
-              key={index}
-              className={`${
-                animeText
-                  ? "tracking-wide top-1  opacity-0"
-                  : " opacity-100 top-4 "
-              } relative duration-700 bg-white px-4 py-3 text-black `}
-            >
-              {text}
-            </button>
+          {carouselData[curr]?.buttons.map(({ text, link }, index) => (
+            <a href={link} key={index}>
+              <button
+                className={`${
+                  animeText
+                    ? "tracking-wide top-1  opacity-0"
+                    : " opacity-100 top-4 "
+                } relative duration-700 bg-white px-4 py-3 text-black `}
+              >
+                {text}
+              </button>
+            </a>
           ))}
         </div>
       </div>

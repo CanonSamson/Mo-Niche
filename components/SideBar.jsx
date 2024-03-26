@@ -21,13 +21,15 @@ const SideBar = ({ viewSideBar, setViewSideBar }) => {
         >
           <span>Home Page</span>
         </Link>
-        <Link
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={() => setViewSideBar(false)}
-          href="/book-a-consultation"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdY63li9bCjM-WmilxZAOWqzL8EJC5aQpk7SUAx9An0BdSijQ/viewform?usp=sf_link"
           className=" bg-gray-100 rounded-md text-black w-full px-5 py-3 mb-5"
         >
           <span>Book a Consultation</span>
-        </Link>
+        </a>
 
         <div
           onClick={() => setViewCollections(!viewCollections)}
@@ -53,15 +55,73 @@ const SideBar = ({ viewSideBar, setViewSideBar }) => {
             viewCollections ? " h-[300px]" : "  h-0"
           } relative  duration-700 overflow-hidden`}
         >
-          <li className=" border-b p-2 ">Ready To Wear</li>
-          <li className="  p-2 border-b ">After Party Dress</li>
-          <li className="  p-2 border-b ">MoNiche Lady</li>
-          <li className="  p-2 border-b ">2022 Collections</li>
-          <li className="  p-2 border-b ">Beachwear</li>
-          <li className="  p-2 border-b ">Business Attire</li>
-          <li className="  p-2 border-b ">Birthday Dress</li>
-          <li className="  p-2 border-b ">Formal Dress</li>
-          <li className="  p-2 border-b ">Wedding Dress</li>
+          <li className=" border-b p-2 ">
+            <Link href="/products/category/ready-to-wear">Ready To Wear</Link>
+          </li>
+          <li>
+            <Link
+              className="  p-2 border-b "
+              href="/products/category/after-party-dress"
+            >
+              After Party Dress
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="  p-2 border-b "
+              href="/products/category/mo-niche-lady"
+            >
+              Mo Niche Lady
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="  p-2 border-b "
+              href="/products/category/2022-collections"
+            >
+              2022 Collections
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="  p-2 border-b "
+              href="/products/category/beachwear"
+            >
+              Beachwear
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="  p-2 border-b "
+              href="/products/category/business-attire"
+            >
+              Business Attire
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="  p-2 border-b "
+              href="/products/category/business-attire"
+            >
+              Birthday Dress
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="  p-2 border-b "
+              href="/products/category/formal-dress"
+            >
+              Formal Dress
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="  p-2 border-b "
+              href="/products/category/wedding-dress"
+            >
+              Wedding Dress
+            </Link>
+          </li>
         </ul>
         <ul className=" grid mt-10 gap-4">
           <li>
