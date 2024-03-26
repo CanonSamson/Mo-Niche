@@ -12,7 +12,7 @@ export const products = [
       "This beautiful dress combines elegance with a modern touch. It has flowing cape sleeves and a stylish fit. It's perfect for anyone who wants to look classy and chic. Wear it for a special event or a night out, and you'll surely get noticed. Feel confident and stylish in this timeless dress inspired by Marilyn Monroe's iconic fashion sense.",
   },
   {
-    images: ["/images/image-8.jpg"],
+    images: ["/images/image-7.jpg", "/images/image-8.jpg"],
     name: "Glimmering Sequin Minx",
     basePrice: "90.00",
     price: "90.00",

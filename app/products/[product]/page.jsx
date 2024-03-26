@@ -5,11 +5,12 @@ import Footer from "@/components/Footer";
 import Icon from "@/components/Icon";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GoPlus } from "react-icons/go";
 import { AiOutlineMinus } from "react-icons/ai";
+import { FaAngleLeft } from "react-icons/fa6";
 
 const Page = () => {
   const details = useParams();
@@ -20,6 +21,7 @@ const Page = () => {
   }));
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleAddToCart = () => {
     if (product) {
@@ -53,22 +55,32 @@ const Page = () => {
   const isProductInCart =
     product && cartItems.some((item) => item.id === product.uid);
 
+  const le = 400 * product?.images?.length;
+  const f = le.toString + "px";
   return (
     <>
       <div className="pt-[60px] font-sans font-light pb-20">
-        <div className="bg-gray-100 py-5 flex justify-center mb-5">
-          <span>
-            <Link href="/">HOME</Link> /{" "}
-            <Link href="/products"> OTHER PRODUCTS</Link>
-          </span>
+        <div className="bg-gray-100 sticky top-[60px] px-4 py-2  flex justify-between ">
+          <button type="button" onClick={() => router.back()}>
+            <FaAngleLeft size={24} />
+          </button>
+          <span className=" font-semibold text-xl">Details</span>
+          <span />
         </div>
-        <Image
-          src={product?.images[0]}
-          width={300}
-          height={300}
-          className="h-auto bg-gray-100 w-full object-cover"
-          alt={product?.name}
-        />
+        <div className=" w-full overflow-x-auto">
+          <div className={` h-[500px]  flex gap-2 mx-auto`}>
+            {product?.images.map((item) => (
+              <Image
+                src={item}
+                width={300}
+                height={300}
+                className=" bg-white w-full mx-auto object-cover"
+                alt={product?.name}
+              />
+            ))}
+          </div>
+        </div>
+
         <div className="px-2 mt-5">
           <h1 className="text-2xl">{product?.name}</h1>
           <div className="text-2xl py-2 mb-4 italic font-serif">

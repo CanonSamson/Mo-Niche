@@ -85,16 +85,16 @@ export default function Carousel({ autoSlideInterval = 5000 }) {
       <div className="overflow-hidden  h-screen w-full object-cover absolute z-0  ">
         <div className="  transition-transform ease-out w-full h-full  duration-500">
           {carouselData.map(({ image }, index) => (
-            <Image
+            <img
               key={index}
               className={`${
                 index === curr
                   ? "z-30 opacity-100  scale-100"
                   : "z-20 opacity-0 scale-110"
-              } duration-500 w-full h-full object-cover absolute z-0`}
+              } duration-500 w-full h-full object-cover object-top absolute z-0`}
               src={image}
-              width={800}
-              height={800}
+              width={2000}
+              height={2000}
               alt="images_"
             />
           ))}
